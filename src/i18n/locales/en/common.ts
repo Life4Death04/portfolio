@@ -5,6 +5,7 @@ export const en = {
   navigation: {
     label: "Primary navigation",
     index: "Index",
+    skills: "Skills",
     work: "Work",
     about: "About",
     contact: "Get in touch",
@@ -34,6 +35,30 @@ export const en = {
       github: "GitHub",
       linkedin: "LinkedIn",
       external: "{{name}} (opens in a new tab)",
+    },
+  },
+  skills: {
+    eyebrow: "Capabilities",
+    title: "Technical Skills",
+    titleLead: "Technical",
+    titleAccent: "Skills",
+    description:
+      "My experience spans the most in-demand tools in the web ecosystem. I'm prepared to work in Frontend and Backend development environments, with a focus on quality and performance.",
+    toolsLabel: "Tools and technologies",
+    groups: {
+      frontend: {
+        title: "Frontend Technologies",
+      },
+      backend: {
+        title: "Backend Technologies",
+      },
+      tools: {
+        title: "Tools & Software",
+      },
+    },
+    learning: {
+      label: "Currently learning",
+      description: "Exploring new technologies…",
     },
   },
 } as const;

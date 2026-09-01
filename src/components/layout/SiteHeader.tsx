@@ -5,6 +5,7 @@ import { SITE_CONFIG } from "../../config/site";
 
 const navigation = [
   { key: "navigation.index", href: SITE_CONFIG.links.home },
+  { key: "navigation.skills", href: SITE_CONFIG.links.skills },
   { key: "navigation.work", href: SITE_CONFIG.links.projects },
   { key: "navigation.about", href: SITE_CONFIG.links.about },
 ] as const;

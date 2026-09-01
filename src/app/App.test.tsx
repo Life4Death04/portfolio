@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { render, screen, within } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 import { i18n } from "../i18n";
 import { App } from "./App";
@@ -17,11 +17,24 @@ describe("App", () => {
     expect(screen.getByText("Remote worldwide")).toBeInTheDocument();
   });
 
+  it("places Skills directly after Home", () => {
+    render(<App />);
+
+    const sections = within(screen.getByRole("main")).getAllByRole("region");
+
+    expect(sections).toHaveLength(2);
+    expect(sections[0]).toHaveAttribute("id", "home");
+    expect(sections[1]).toHaveAttribute("id", "skills");
+  });
+
   it("renders Home in Spanish without relying on navigator language", async () => {
     await i18n.changeLanguage("es");
     render(<App />);
 
     expect(screen.getByText("Desarrollador frontend")).toBeInTheDocument();
     expect(screen.getByText("Interfaces creadas")).toBeInTheDocument();
+    expect(
+      screen.getByRole("heading", { name: "Habilidades técnicas" }),
+    ).toBeInTheDocument();
   });
 });

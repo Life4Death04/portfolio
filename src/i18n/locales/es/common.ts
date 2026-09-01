@@ -5,6 +5,7 @@ export const es = {
   navigation: {
     label: "Navegación principal",
     index: "Inicio",
+    skills: "Habilidades",
     work: "Proyectos",
     about: "Acerca de mí",
     contact: "Contactar",
@@ -34,6 +35,30 @@ export const es = {
       github: "GitHub",
       linkedin: "LinkedIn",
       external: "{{name}} (se abre en una pestaña nueva)",
+    },
+  },
+  skills: {
+    eyebrow: "Capacidades",
+    title: "Habilidades técnicas",
+    titleLead: "Habilidades",
+    titleAccent: "técnicas",
+    description:
+      "Mi experiencia abarca las herramientas más demandadas del ecosistema web. Estoy preparado para trabajar en entornos de desarrollo frontend y backend, con un enfoque en la calidad y el rendimiento.",
+    toolsLabel: "Herramientas y tecnologías",
+    groups: {
+      frontend: {
+        title: "Tecnologías frontend",
+      },
+      backend: {
+        title: "Tecnologías backend",
+      },
+      tools: {
+        title: "Herramientas y software",
+      },
+    },
+    learning: {
+      label: "Actualmente aprendiendo",
+      description: "Explorando nuevas tecnologías…",
     },
   },
 } as const;

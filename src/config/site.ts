@@ -7,6 +7,7 @@ export const SITE_CONFIG = {
   defaultLanguage: "en" satisfies SupportedLanguage,
   links: {
     home: "#home",
+    skills: "#skills",
     projects: "#projects",
     about: "#about",
     email: "mailto:hello@santiago.dev",
