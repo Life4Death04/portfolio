@@ -457,6 +457,189 @@ button {
   background: #f2f3f4;
 }
 
+.projects-section {
+  display: flex;
+  flex-direction: column;
+  gap: 64px;
+  padding: 96px 72px;
+  border: 1px solid rgb(255 255 255 / 7%);
+  border-radius: 20px;
+  background: #0b0b0c;
+  font-family: var(--font-body);
+  scroll-margin-top: 24px;
+}
+
+.projects-intro {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 22px;
+  text-align: center;
+}
+
+.projects-title {
+  margin: 0;
+  font-size: 64px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.08;
+}
+
+.projects-title span:last-child {
+  color: #6f7276;
+}
+
+.projects-description {
+  max-width: 760px;
+  margin: 0;
+  color: #b9bcbf;
+  font-size: 19px;
+  line-height: 1.62;
+  text-wrap: pretty;
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+  align-items: stretch;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.project-card {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 24px;
+  padding: 16px 16px 30px;
+  border: 1px solid rgb(255 255 255 / 9%);
+  border-radius: 18px;
+  background: rgb(255 255 255 / 2%);
+}
+
+.project-media {
+  display: flex;
+  aspect-ratio: 16 / 10;
+  align-items: center;
+  justify-content: center;
+  border-radius: 14px;
+  background: linear-gradient(180deg, #1a1a1c 0%, #101011 100%);
+}
+
+.project-media > span {
+  color: #55585b;
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.project-content {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 20px;
+  padding: 0 12px;
+}
+
+.project-heading {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.project-number {
+  display: inline-flex;
+  min-width: 30px;
+  height: 26px;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  padding: 0 8px;
+  border-radius: 8px;
+  background: rgb(255 255 255 / 8%);
+  color: #f2f3f4;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.project-heading h3 {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.25;
+}
+
+.project-description {
+  margin: 0;
+  color: #b9bcbf;
+  font-size: 16px;
+  line-height: 1.6;
+  text-wrap: pretty;
+}
+
+.project-technologies {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  color: #c9cbcd;
+  font-size: 13px;
+  list-style: none;
+}
+
+.project-technologies li {
+  padding: 8px 13px;
+  border: 1px solid rgb(255 255 255 / 12%);
+  border-radius: 10px;
+}
+
+.project-technologies .project-more {
+  color: #6f7276;
+}
+
+.project-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: auto;
+  padding-top: 12px;
+}
+
+.project-action {
+  display: inline-flex;
+  height: 48px;
+  align-items: center;
+  justify-content: center;
+  padding: 0 22px;
+  border-radius: 12px;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.project-action-code {
+  border: 0;
+  background: #f2f3f4;
+  color: #0b0b0c;
+}
+
+.project-action-project {
+  border: 1px solid rgb(255 255 255 / 16%);
+  background: rgb(255 255 255 / 4%);
+  color: #f2f3f4;
+}
+
+.project-action:disabled {
+  cursor: not-allowed;
+}
+
+.project-action-short {
+  display: none;
+}
+
 button,
 a {
   -webkit-tap-highlight-color: transparent;
@@ -686,6 +869,106 @@ a {
   .skills-learning p {
     font-size: 17px;
   }
+
+  .projects-section {
+    gap: 32px;
+    padding: 52px 24px 56px;
+  }
+
+  .projects-intro {
+    align-items: flex-start;
+    gap: 16px;
+    text-align: left;
+  }
+
+  .projects-title {
+    font-size: 38px;
+    line-height: 1.1;
+  }
+
+  .projects-description {
+    font-size: 16px;
+  }
+
+  .projects-description-detail {
+    display: none;
+  }
+
+  .projects-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .project-card {
+    gap: 20px;
+    padding: 14px 14px 26px;
+  }
+
+  .project-card-tasks {
+    display: none;
+  }
+
+  .project-media {
+    aspect-ratio: 4 / 3;
+  }
+
+  .project-media > span {
+    font-size: 11px;
+  }
+
+  .project-media-ratio {
+    display: none;
+  }
+
+  .project-content {
+    gap: 18px;
+    padding: 0 10px;
+  }
+
+  .project-heading {
+    gap: 10px;
+  }
+
+  .project-number {
+    min-width: 28px;
+    height: 24px;
+    font-size: 12px;
+  }
+
+  .project-heading h3 {
+    font-size: 20px;
+  }
+
+  .project-description {
+    font-size: 15px;
+  }
+
+  .project-technologies {
+    font-size: 12px;
+  }
+
+  .project-technologies li {
+    padding: 8px 12px;
+  }
+
+  .project-actions {
+    gap: 10px;
+    padding-top: 0;
+  }
+
+  .project-action {
+    flex: 1;
+    padding: 0;
+  }
+
+  .project-action-project .project-action-long {
+    display: none;
+  }
+
+  .project-action-short {
+    display: inline;
+  }
 }
 
 @media (min-width: 761px) and (max-width: 1040px) {
@@ -749,5 +1032,88 @@ a {
 
   .skills-learning p {
     font-size: 17px;
+  }
+
+  .projects-section {
+    gap: 48px;
+    padding: 72px 48px;
+  }
+
+  .projects-intro {
+    gap: 18px;
+  }
+
+  .projects-title {
+    font-size: 50px;
+  }
+
+  .projects-description {
+    max-width: 620px;
+    font-size: 17px;
+  }
+
+  .projects-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+  }
+
+  .project-card {
+    gap: 22px;
+    padding: 14px 14px 28px;
+  }
+
+  .project-card-tasks {
+    display: grid;
+    grid-column: span 2;
+    grid-template-columns: 320px minmax(0, 1fr);
+    gap: 24px;
+    align-items: center;
+    padding: 14px;
+  }
+
+  .project-media > span {
+    font-size: 11px;
+  }
+
+  .project-content {
+    gap: 18px;
+    padding: 0 10px;
+  }
+
+  .project-card-tasks .project-content {
+    padding: 8px 12px 8px 0;
+  }
+
+  .project-heading {
+    gap: 10px;
+  }
+
+  .project-number {
+    min-width: 28px;
+    height: 25px;
+    font-size: 12px;
+  }
+
+  .project-heading h3 {
+    font-size: 21px;
+  }
+
+  .project-description {
+    font-size: 15px;
+  }
+
+  .project-actions {
+    gap: 10px;
+    padding-top: 10px;
+  }
+
+  .project-card-tasks .project-actions {
+    margin-top: 0;
+    padding-top: 0;
+  }
+
+  .project-action {
+    height: 46px;
+    padding: 0 20px;
   }
 }

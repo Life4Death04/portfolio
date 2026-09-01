@@ -17,14 +17,15 @@ describe("App", () => {
     expect(screen.getByText("Remote worldwide")).toBeInTheDocument();
   });
 
-  it("places Skills directly after Home", () => {
+  it("places Projects directly after Skills", () => {
     render(<App />);
 
     const sections = within(screen.getByRole("main")).getAllByRole("region");
 
-    expect(sections).toHaveLength(2);
+    expect(sections).toHaveLength(3);
     expect(sections[0]).toHaveAttribute("id", "home");
     expect(sections[1]).toHaveAttribute("id", "skills");
+    expect(sections[2]).toHaveAttribute("id", "projects");
   });
 
   it("renders Home in Spanish without relying on navigator language", async () => {
@@ -35,6 +36,9 @@ describe("App", () => {
     expect(screen.getByText("Interfaces creadas")).toBeInTheDocument();
     expect(
       screen.getByRole("heading", { name: "Habilidades técnicas" }),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByRole("heading", { name: "Mis proyectos" }),
     ).toBeInTheDocument();
   });
 });

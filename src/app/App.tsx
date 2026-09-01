@@ -1,5 +1,6 @@
 import { SiteHeader } from "../components/layout/SiteHeader";
 import { HomeSection } from "../sections/home/HomeSection";
+import { ProjectsSection } from "../sections/projects/ProjectsSection";
 import { SkillsSection } from "../sections/skills/SkillsSection";
 
 export function App() {
@@ -12,8 +13,8 @@ export function App() {
       <main>
         <HomeSection />
         <SkillsSection />
+        <ProjectsSection />
       </main>
-      <div id="projects" />
       <div id="about" />
     </div>
   );

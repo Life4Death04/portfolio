@@ -61,4 +61,39 @@ export const en = {
       description: "Exploring new technologies…",
     },
   },
+  projects: {
+    eyebrow: "Selected work",
+    title: "My Projects",
+    titleLead: "My",
+    titleAccent: "Projects",
+    descriptionLead:
+      "A selection of my most relevant work, where I apply my expertise in React.js, Node.js and databases to transform ideas into functional products.",
+    descriptionDetail:
+      " Each project is a demonstration of my skills in creating solid user experiences and optimized code.",
+    mediaPlaceholder: "Project shot",
+    mediaLabel: "Project shot placeholder for {{title}}",
+    technologiesLabel: "Technologies used in {{title}}",
+    more: "+{{count}} more",
+    actions: {
+      code: "View code",
+      project: "View project",
+      projectShort: "Project",
+    },
+    items: {
+      ecommerce: {
+        title: "E-commerce Platform with Stripe",
+        description:
+          "Real-time inventory management system built with TypeScript and Prisma ORM.",
+      },
+      blog: {
+        title: "Dynamic Content Blog",
+        description: "Dynamic content blog implemented with React and Express.",
+      },
+      tasks: {
+        title: "Task Management App",
+        description:
+          "Collaborative task management application with real-time updates.",
+      },
+    },
+  },
 } as const;
