@@ -1,9 +1,17 @@
-import { render, screen, waitFor } from "@testing-library/react";
+import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { describe, expect, it } from "vitest";
 import { SiteHeader } from "./SiteHeader";
 
 describe("SiteHeader", () => {
+  const scrollTo = (scrollY: number) => {
+    Object.defineProperty(window, "scrollY", {
+      configurable: true,
+      value: scrollY,
+    });
+    fireEvent.scroll(window);
+  };
+
   it("renders independently with primary navigation", () => {
     render(<SiteHeader />);
 
@@ -48,5 +56,47 @@ describe("SiteHeader", () => {
         screen.getAllByRole("navigation", { name: "Primary navigation" }),
       ).toHaveLength(1),
     );
+  });
+
+  it("hides on meaningful downward scrolling and reveals upward or near the top", () => {
+    render(<SiteHeader />);
+    const header = screen.getByRole("banner");
+
+    scrollTo(4);
+    expect(header).not.toHaveClass("site-header-hidden");
+
+    scrollTo(40);
+    expect(header).toHaveClass("site-header-hidden");
+
+    scrollTo(28);
+    expect(header).not.toHaveClass("site-header-hidden");
+
+    scrollTo(60);
+    expect(header).toHaveClass("site-header-hidden");
+
+    scrollTo(20);
+    expect(header).not.toHaveClass("site-header-hidden");
+  });
+
+  it("stays visible while its menu is open or keyboard focus is within it", async () => {
+    const user = userEvent.setup();
+    render(<SiteHeader />);
+    const header = screen.getByRole("banner");
+    const menuButton = screen.getByRole("button", {
+      name: "Open navigation menu",
+    });
+
+    scrollTo(80);
+    expect(header).toHaveClass("site-header-hidden");
+
+    await user.click(menuButton);
+    expect(header).not.toHaveClass("site-header-hidden");
+
+    await user.click(menuButton);
+    fireEvent.blur(menuButton, { relatedTarget: document.body });
+    expect(header).toHaveClass("site-header-hidden");
+
+    fireEvent.focus(screen.getByRole("link", { name: "Santiago Rodríguez" }));
+    expect(header).not.toHaveClass("site-header-hidden");
   });
 });

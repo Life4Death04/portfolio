@@ -13,12 +13,12 @@ const EXPECTED_PROJECTS = [
   {
     title: "Dynamic Content Blog",
     technologies: ["React.js", "Express.js", "Node.js", "+2 more"],
-    actions: ["View code"],
+    actions: ["View code", "View project"],
   },
   {
     title: "Task Management App",
     technologies: ["React.js", "Node.js", "Socket.io", "+2 more"],
-    actions: ["View code"],
+    actions: ["View code", "View project"],
   },
 ] as const;
 
@@ -103,7 +103,12 @@ describe("ProjectsSection", () => {
     ).toBeInTheDocument();
     expect(within(section).getAllByText("React.js")).toHaveLength(3);
     expect(
-      within(section).getByRole("button", { name: "Ver proyecto" }),
-    ).toBeDisabled();
+      within(section).getAllByRole("button", { name: "Ver código" }),
+    ).toHaveLength(3);
+    const projectActions = within(section).getAllByRole("button", {
+      name: "Ver proyecto",
+    });
+    expect(projectActions).toHaveLength(3);
+    projectActions.forEach((action) => expect(action).toBeDisabled());
   });
 });

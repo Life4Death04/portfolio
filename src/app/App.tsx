@@ -8,10 +8,8 @@ import { SkillsSection } from "../sections/skills/SkillsSection";
 export function App() {
   return (
     <div className="portfolio-shell">
-      <div className="progress-rule" aria-hidden="true">
-        <span />
-      </div>
       <SiteHeader />
+      <div className="site-header-spacer" aria-hidden="true" />
       <main>
         <HomeSection />
         <SkillsSection />

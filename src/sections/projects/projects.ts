@@ -23,13 +23,13 @@ export const PROJECTS: readonly ProjectRecord[] = [
     number: "02",
     technologies: ["React.js", "Express.js", "Node.js"],
     additionalTechnologies: 2,
-    actions: ["code"],
+    actions: ["code", "project"],
   },
   {
     key: "tasks",
     number: "03",
     technologies: ["React.js", "Node.js", "Socket.io"],
     additionalTechnologies: 2,
-    actions: ["code"],
+    actions: ["code", "project"],
   },
 ] as const;

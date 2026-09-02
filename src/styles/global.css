@@ -14,6 +14,9 @@
 }
 
 :root {
+  --site-header-height: 92px;
+  --anchor-clearance: 24px;
+
   color-scheme: dark;
   font-family: var(--font-body);
   color: var(--color-primary);
@@ -31,6 +34,7 @@
 html {
   min-width: 320px;
   scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--site-header-height) + var(--anchor-clearance));
 }
 
 body {
@@ -58,6 +62,10 @@ button {
 }
 
 .progress-rule {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
   height: 2px;
   background: rgb(242 242 240 / 8%);
 }
@@ -70,13 +78,27 @@ button {
 }
 
 .site-header {
-  position: relative;
-  z-index: 10;
+  position: fixed;
+  z-index: 20;
+  top: 0;
+  right: 0;
+  left: 0;
   display: flex;
-  min-height: 90px;
+  min-height: var(--site-header-height);
   align-items: center;
   justify-content: space-between;
-  padding: 0 5vw;
+  padding: 2px 5vw 0;
+  background: rgb(10 10 12 / 94%);
+  backdrop-filter: blur(14px);
+  transition: transform 220ms ease;
+}
+
+.site-header-hidden {
+  transform: translateY(-100%);
+}
+
+.site-header-spacer {
+  height: var(--site-header-height);
 }
 
 .site-name {
@@ -127,7 +149,7 @@ button {
 
 .home-section {
   display: grid;
-  min-height: calc(100svh - 92px);
+  min-height: calc(100svh - var(--site-header-height));
   grid-template-columns: minmax(0, 1fr) clamp(320px, 31.25vw, 400px);
   grid-template-rows: repeat(5, auto);
   column-gap: clamp(48px, 6.25vw, 80px);
@@ -314,7 +336,6 @@ button {
   border-radius: 20px;
   background: #0b0b0c;
   font-family: var(--font-body);
-  scroll-margin-top: 24px;
 }
 
 .skills-intro {
@@ -466,7 +487,6 @@ button {
   border-radius: 20px;
   background: #0b0b0c;
   font-family: var(--font-body);
-  scroll-margin-top: 24px;
 }
 
 .projects-intro {
@@ -652,7 +672,6 @@ button {
   border-radius: 20px;
   background: #0b0b0c;
   font-family: var(--font-body);
-  scroll-margin-top: 24px;
 }
 
 .about-heading {
@@ -870,7 +889,6 @@ button {
   border-radius: 20px;
   background: #0b0b0c;
   font-family: var(--font-body);
-  scroll-margin-top: 24px;
 }
 
 .contact-profile,
@@ -1183,12 +1201,21 @@ a {
   html {
     scroll-behavior: auto;
   }
+
+  .site-header {
+    transform: none;
+    transition: none;
+  }
 }
 
 @media (max-width: 760px) {
+  :root {
+    --site-header-height: 74px;
+    --anchor-clearance: 16px;
+  }
+
   .site-header {
-    min-height: 72px;
-    padding: 0 22px;
+    padding: 2px 22px 0;
   }
 
   .site-name {
@@ -1222,7 +1249,7 @@ a {
 
   .mobile-navigation {
     position: absolute;
-    top: 64px;
+    top: calc(var(--site-header-height) - 10px);
     right: 16px;
     left: 16px;
     display: grid;
@@ -1248,7 +1275,7 @@ a {
   }
 
   .home-section {
-    min-height: calc(100svh - 74px);
+    min-height: calc(100svh - var(--site-header-height));
     grid-template-columns: minmax(0, 1fr);
     grid-template-rows: auto;
     align-content: start;
@@ -1503,7 +1530,11 @@ a {
 
   .about-heading {
     order: 1;
+    width: 100%;
+    min-width: 0;
+    align-self: stretch;
     gap: 16px;
+    text-align: center;
   }
 
   .about-title {
@@ -1513,10 +1544,15 @@ a {
 
   .about-portrait-group {
     order: 2;
+    width: 100%;
+    min-width: 0;
+    align-self: stretch;
     gap: 16px;
   }
 
   .about-portrait {
+    width: 100%;
+    min-width: 0;
     box-shadow: 0 30px 70px rgb(0 0 0 / 50%);
   }
 
@@ -1539,12 +1575,19 @@ a {
 
   .about-description {
     order: 3;
+    width: 100%;
+    min-width: 0;
+    align-self: stretch;
     font-size: 17px;
     line-height: 1.62;
+    text-align: center;
   }
 
   .about-facts {
     order: 4;
+    width: 100%;
+    min-width: 0;
+    align-self: stretch;
   }
 
   .about-facts > div {
@@ -1564,6 +1607,9 @@ a {
 
   .about-actions {
     order: 5;
+    width: 100%;
+    min-width: 0;
+    align-self: stretch;
     flex-direction: column;
     gap: 18px;
   }
@@ -1601,11 +1647,15 @@ a {
 
   .contact-profile,
   .contact-panels {
+    width: 100%;
+    min-width: 0;
+    align-self: stretch;
     gap: 28px;
   }
 
   .contact-heading {
     gap: 14px;
+    text-align: center;
   }
 
   .contact-title {
@@ -1614,11 +1664,23 @@ a {
   }
 
   .contact-portrait {
+    width: 100%;
+    min-width: 0;
     box-shadow: none;
   }
 
+  .contact-portrait-group {
+    width: 100%;
+    min-width: 0;
+    align-self: stretch;
+  }
+
   .contact-note {
+    width: 100%;
+    min-width: 0;
+    align-self: stretch;
     font-size: 16px;
+    text-align: center;
   }
 
   .contact-profile-meta {
@@ -1626,8 +1688,20 @@ a {
   }
 
   .contact-panel {
+    width: 100%;
+    min-width: 0;
+    align-self: stretch;
     gap: 16px;
     padding: 24px 20px;
+  }
+
+  .contact-form,
+  .contact-connections,
+  .contact-form fieldset,
+  .contact-action-list {
+    width: 100%;
+    min-width: 0;
+    align-self: stretch;
   }
 
   .contact-panel-heading {
