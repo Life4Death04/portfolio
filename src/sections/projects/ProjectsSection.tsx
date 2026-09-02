@@ -46,7 +46,6 @@ export function ProjectsSection() {
         className="projects-intro"
         variants={createProjectsRevealVariants(reduceMotion)}
       >
-        <p className="section-index">02 — {t("projects.eyebrow")}</p>
         <h2
           id="projects-title"
           className="projects-title"

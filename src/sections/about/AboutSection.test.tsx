@@ -19,7 +19,6 @@ describe("AboutSection", () => {
     expect(
       within(section).getByRole("heading", { name: "About Me" }),
     ).toBeInTheDocument();
-    expect(within(section).getByText("04 — About")).toBeInTheDocument();
     expect(
       within(section).getByText(
         "I'm a passionate full-stack developer with experience in modern web technologies. I love creating efficient, scalable, and user-friendly applications.",
@@ -92,7 +91,6 @@ describe("AboutSection", () => {
 
     const section = screen.getByRole("region", { name: "Acerca de mí" });
 
-    expect(within(section).getByText("04 — Acerca de mí")).toBeInTheDocument();
     expect(
       within(section).getByText("Estudiante de Ingeniería de Sistemas"),
     ).toBeInTheDocument();

@@ -36,7 +36,6 @@ describe("ProjectsSection", () => {
         (project) => within(project).getByRole("heading").textContent,
       ),
     ).toEqual(EXPECTED_PROJECTS.map((project) => project.title));
-    expect(within(section).getByText("02 — Selected work")).toBeInTheDocument();
   });
 
   it("preserves technology order and honest disabled action availability", () => {
@@ -92,9 +91,6 @@ describe("ProjectsSection", () => {
 
     const section = screen.getByRole("region", { name: "Mis proyectos" });
 
-    expect(
-      within(section).getByText("02 — Trabajo seleccionado"),
-    ).toBeInTheDocument();
     expect(
       within(section).getByRole("heading", {
         name: "Plataforma de comercio electrónico con Stripe",

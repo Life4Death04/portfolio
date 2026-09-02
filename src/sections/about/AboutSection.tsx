@@ -86,7 +86,6 @@ export function AboutSection() {
         className="about-heading"
         variants={createFadeUpVariants(reduceMotion)}
       >
-        <p className="section-index">04 — {t("about.eyebrow")}</p>
         <h2
           id="about-title"
           className="about-title"

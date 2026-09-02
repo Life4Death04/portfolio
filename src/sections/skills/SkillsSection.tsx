@@ -40,7 +40,6 @@ export function SkillsSection() {
       viewport={{ once: true, amount: 0.12 }}
     >
       <motion.header className="skills-intro" variants={introVariants}>
-        <p className="section-index">03 — {t("skills.eyebrow")}</p>
         <h2
           id="skills-title"
           className="skills-title"
