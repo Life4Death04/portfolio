@@ -96,4 +96,37 @@ export const en = {
       },
     },
   },
+  about: {
+    eyebrow: "About",
+    title: "About Me",
+    titleLead: "About",
+    titleAccent: "Me",
+    description:
+      "I'm a passionate full-stack developer with experience in modern web technologies. I love creating efficient, scalable, and user-friendly applications.",
+    availability: "Currently Job Seeking",
+    portraitDescription: "4:5 portrait placeholder for Santiago Rodríguez",
+    portraitLabel: "Portrait / 4:5",
+    figureLabel: "Fig. 02",
+    facts: {
+      education: {
+        label: "Education",
+        value: "Systems Engineering Student",
+      },
+      experience: {
+        label: "Experience",
+        value: "2+ Years Development",
+      },
+      focus: {
+        label: "Focus",
+        value: "Full-stack · React · Node.js",
+      },
+    },
+    actions: {
+      contact: "Get in touch",
+      downloadCv: "Download CV",
+      github: "GitHub",
+      linkedin: "LinkedIn",
+      external: "{{name}} (opens in a new tab)",
+    },
+  },
 } as const;
