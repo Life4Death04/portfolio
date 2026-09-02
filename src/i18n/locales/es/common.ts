@@ -20,10 +20,7 @@ export const es = {
     description:
       "Creo interfaces de producto para equipos que cuidan hasta el último detalle. React y TypeScript, con un interés constante por el rendimiento, el movimiento y la accesibilidad.",
     cta: "Iniciar un proyecto",
-    portraitDescription:
-      "Marcador de retrato con patrón para Santiago Rodríguez",
-    portraitLabel: "retrato / 4:5",
-    portraitCaption: "Fig. 01 — Santiago, 2026",
+    portraitDescription: "Santiago Rodríguez con traje negro y corbata",
     metrics: {
       years: { value: "6", label: "Años creando" },
       interfaces: { value: "30+", label: "Interfaces creadas" },
@@ -104,10 +101,8 @@ export const es = {
     titleAccent: "mí",
     description:
       "Soy un desarrollador full-stack apasionado con experiencia en tecnologías web modernas. Me encanta crear aplicaciones eficientes, escalables y fáciles de usar.",
-    availability: "Actualmente buscando empleo",
-    portraitDescription: "Marcador de retrato 4:5 de Santiago Rodríguez",
-    portraitLabel: "Retrato / 4:5",
-    figureLabel: "Fig. 02",
+    portraitDescription:
+      "Retrato de Santiago Rodríguez con traje negro y corbata",
     facts: {
       education: {
         label: "Educación",

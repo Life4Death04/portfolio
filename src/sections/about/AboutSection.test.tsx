@@ -11,7 +11,7 @@ const ENGLISH_FACTS = [
 ] as const;
 
 describe("AboutSection", () => {
-  it("renders the named About region, selected copy, availability, and portrait placeholder", () => {
+  it("renders the named About region, selected copy, and portrait", () => {
     render(<AboutSection />);
 
     const section = screen.getByRole("region", { name: "About Me" });
@@ -24,16 +24,15 @@ describe("AboutSection", () => {
         "I'm a passionate full-stack developer with experience in modern web technologies. I love creating efficient, scalable, and user-friendly applications.",
       ),
     ).toBeInTheDocument();
-    expect(
-      within(section).getByText("Currently Job Seeking"),
-    ).toBeInTheDocument();
-    expect(
-      within(section).getByRole("img", {
-        name: "4:5 portrait placeholder for Santiago Rodríguez",
-      }),
-    ).toBeInTheDocument();
-    expect(within(section).queryByRole("img", { hidden: true })).toBeDefined();
-    expect(section.querySelector("img")).not.toBeInTheDocument();
+    const portrait = within(section).getByRole("img", {
+      name: "Portrait of Santiago Rodríguez wearing a black suit and tie",
+    });
+
+    expect(portrait).toHaveAttribute("src", SITE_CONFIG.images.portrait);
+    expect(portrait).toHaveAttribute("width", "795");
+    expect(portrait).toHaveAttribute("height", "825");
+    expect(portrait).toHaveAttribute("loading", "lazy");
+    expect(portrait).toHaveAttribute("decoding", "async");
   });
 
   it("uses a description list with the exact fact order and values", () => {
@@ -103,6 +102,11 @@ describe("AboutSection", () => {
     expect(
       within(section).getByRole("button", { name: "Descargar CV" }),
     ).toBeDisabled();
+    expect(
+      within(section).getByRole("img", {
+        name: "Retrato de Santiago Rodríguez con traje negro y corbata",
+      }),
+    ).toHaveAttribute("src", SITE_CONFIG.images.portrait);
     expect(
       within(section).getByRole("link", {
         name: "GitHub (se abre en una pestaña nueva)",

@@ -100,19 +100,15 @@ export function AboutSection() {
         className="about-portrait-group"
         variants={createPortraitVariants(reduceMotion)}
       >
-        <div
-          className="about-portrait"
-          role="img"
-          aria-label={t("about.portraitDescription")}
-        >
-          <span aria-hidden="true">{t("about.portraitLabel")}</span>
-        </div>
-        <div className="about-portrait-meta">
-          <p className="about-availability">
-            <span aria-hidden="true" />
-            {t("about.availability")}
-          </p>
-          <span className="about-figure-label">{t("about.figureLabel")}</span>
+        <div className="about-portrait">
+          <img
+            src={SITE_CONFIG.images.portrait}
+            alt={t("about.portraitDescription")}
+            width={795}
+            height={825}
+            loading="lazy"
+            decoding="async"
+          />
         </div>
       </motion.div>
 

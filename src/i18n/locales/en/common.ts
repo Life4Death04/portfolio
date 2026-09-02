@@ -20,10 +20,7 @@ export const en = {
     description:
       "I build product interfaces for teams that care about the last five percent. React and TypeScript, with a stubborn interest in performance, motion and accessibility.",
     cta: "Start a project",
-    portraitDescription:
-      "Patterned portrait placeholder for Santiago Rodríguez",
-    portraitLabel: "portrait / 4:5",
-    portraitCaption: "Fig. 01 — Santiago, 2026",
+    portraitDescription: "Santiago Rodríguez wearing a black suit and tie",
     metrics: {
       years: { value: "6", label: "Years shipping" },
       interfaces: { value: "30+", label: "Interfaces built" },
@@ -103,10 +100,8 @@ export const en = {
     titleAccent: "Me",
     description:
       "I'm a passionate full-stack developer with experience in modern web technologies. I love creating efficient, scalable, and user-friendly applications.",
-    availability: "Currently Job Seeking",
-    portraitDescription: "4:5 portrait placeholder for Santiago Rodríguez",
-    portraitLabel: "Portrait / 4:5",
-    figureLabel: "Fig. 02",
+    portraitDescription:
+      "Portrait of Santiago Rodríguez wearing a black suit and tie",
     facts: {
       education: {
         label: "Education",

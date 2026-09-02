@@ -88,9 +88,6 @@ export function ProjectsSection() {
 
               <article className="project-content">
                 <header className="project-heading">
-                  <span className="project-number" aria-hidden="true">
-                    {project.number}
-                  </span>
                   <h3>{title}</h3>
                 </header>
                 <p className="project-description">

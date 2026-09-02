@@ -5,6 +5,9 @@ export type SupportedLanguage = (typeof SUPPORTED_LANGUAGES)[number];
 export const SITE_CONFIG = {
   name: "Santiago Rodríguez",
   defaultLanguage: "en" satisfies SupportedLanguage,
+  images: {
+    portrait: "/images/profile/ProfilePicture-IA-v1-Edited.png",
+  },
   links: {
     home: "#home",
     skills: "#skills",

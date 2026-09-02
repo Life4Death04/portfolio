@@ -86,14 +86,17 @@ export function HomeSection() {
       </motion.p>
 
       <motion.figure className="portrait-figure" variants={itemVariants}>
-        <div
-          className="portrait-placeholder"
-          role="img"
-          aria-label={t("home.portraitDescription")}
-        >
-          <span aria-hidden="true">{t("home.portraitLabel")}</span>
+        <div className="portrait-placeholder">
+          <img
+            src={SITE_CONFIG.images.portrait}
+            alt={t("home.portraitDescription")}
+            width={795}
+            height={825}
+            loading="eager"
+            fetchPriority="high"
+            decoding="async"
+          />
         </div>
-        <figcaption>{t("home.portraitCaption")}</figcaption>
       </motion.figure>
 
       <motion.dl className="metrics" variants={itemVariants}>

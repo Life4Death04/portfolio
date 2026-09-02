@@ -63,9 +63,6 @@ export function SkillsSection() {
           >
             <article>
               <header className="skill-group-header">
-                <span className="skill-number" aria-hidden="true">
-                  {group.number}
-                </span>
                 <h3>{t(`skills.groups.${group.key}.title`)}</h3>
               </header>
               <ul
