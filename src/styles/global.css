@@ -882,7 +882,8 @@ button {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 540px));
   justify-content: center;
-  gap: clamp(48px, 5vw, 72px);
+  column-gap: clamp(48px, 5vw, 72px);
+  row-gap: 20px;
   align-items: start;
   padding: 96px 72px;
   border: 1px solid rgb(255 255 255 / 7%);
@@ -892,7 +893,6 @@ button {
 }
 
 .contact-profile,
-.contact-panels,
 .contact-panel,
 .contact-form fieldset,
 .contact-form label,
@@ -986,16 +986,20 @@ button {
   background: #f2f3f4;
 }
 
-.contact-panels {
-  gap: 20px;
-}
-
 .contact-panel {
   gap: 22px;
   padding: 34px 30px;
   border: 1px solid rgb(255 255 255 / 9%);
   border-radius: 18px;
   background: rgb(255 255 255 / 2%);
+}
+
+.contact-form {
+  align-self: stretch;
+}
+
+.contact-connections {
+  grid-column: 1 / -1;
 }
 
 .contact-panel-heading {
@@ -1026,6 +1030,7 @@ button {
 
 .contact-form fieldset {
   min-width: 0;
+  flex: 1;
   gap: 22px;
   margin: 0;
   padding: 0;
@@ -1041,6 +1046,10 @@ button {
 .contact-form label {
   min-width: 0;
   gap: 9px;
+}
+
+.contact-form fieldset > label:last-of-type {
+  flex: 1;
 }
 
 .contact-form label > span {
@@ -1069,6 +1078,7 @@ button {
 
 .contact-form textarea {
   min-height: 132px;
+  flex: 1;
   padding: 14px 15px;
   line-height: 1.55;
   resize: vertical;
@@ -1645,8 +1655,7 @@ a {
     padding: 52px 24px 56px;
   }
 
-  .contact-profile,
-  .contact-panels {
+  .contact-profile {
     width: 100%;
     min-width: 0;
     align-self: stretch;
@@ -2001,7 +2010,8 @@ a {
 
   .contact-section {
     grid-template-columns: 300px minmax(0, 1fr);
-    gap: 32px;
+    column-gap: 32px;
+    row-gap: 18px;
     padding: 72px 48px;
   }
 
@@ -2028,10 +2038,6 @@ a {
 
   .contact-figure-label {
     display: none;
-  }
-
-  .contact-panels {
-    gap: 18px;
   }
 
   .contact-panel {

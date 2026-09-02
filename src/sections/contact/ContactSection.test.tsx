@@ -24,6 +24,15 @@ describe("ContactSection", () => {
     expect(
       within(section).getByRole("heading", { name: "Elsewhere" }),
     ).toBeInTheDocument();
+
+    const form = section.querySelector("form");
+    const elsewhere = within(section)
+      .getByRole("heading", { name: "Elsewhere" })
+      .closest("aside");
+
+    expect(form?.parentElement).toBe(section);
+    expect(elsewhere?.parentElement).toBe(section);
+    expect(form?.nextElementSibling).toBe(elsewhere);
     expect(
       within(section).getByRole("link", { name: "hello@santiago.dev" }),
     ).toHaveAttribute("href", SITE_CONFIG.links.email);
