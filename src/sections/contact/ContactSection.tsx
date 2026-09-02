@@ -60,98 +60,35 @@ export function ContactSection() {
       whileInView="visible"
       viewport={{ once: true, amount: 0.12 }}
     >
-      <motion.div
-        className="contact-profile"
+      <motion.header
+        className="contact-heading"
         variants={createRevealVariants(reduceMotion, 0.14)}
       >
-        <header className="contact-heading">
-          <h2
-            id="contact-title"
-            className="contact-title"
-            aria-label={t("contact.title")}
-          >
-            <span>{t("contact.titleLead")}</span>
-            <span>{t("contact.titleAccent")}</span>
-          </h2>
-        </header>
+        <h2
+          id="contact-title"
+          className="contact-title"
+          aria-label={t("contact.title")}
+        >
+          <span>{t("contact.titleLead")}</span>
+          <span>{t("contact.titleAccent")}</span>
+        </h2>
+      </motion.header>
 
-        <figure className="contact-portrait-group">
-          <div
-            className="contact-portrait"
-            role="img"
-            aria-label={t("contact.portraitDescription")}
-          >
-            <span aria-hidden="true">{t("contact.portraitLabel")}</span>
-          </div>
-        </figure>
-
-        <p className="contact-note">{t("contact.note")}</p>
-        <div className="contact-profile-meta">
-          <p className="contact-availability">
-            <span aria-hidden="true" />
-            {t("contact.availability")}
-          </p>
-          <span className="contact-figure-label">
-            {t("contact.figureLabel")}
-          </span>
-        </div>
-      </motion.div>
-
-      <motion.form
-        className="contact-panel contact-form"
-        aria-describedby="contact-form-status"
+      <motion.article
+        className="contact-panel contact-about"
+        aria-labelledby="contact-about-title"
         variants={createRevealVariants(reduceMotion, 0.24)}
       >
         <div className="contact-panel-heading">
-          <h3>{t("contact.form.title")}</h3>
+          <h3 id="contact-about-title">{t("contact.about.title")}</h3>
         </div>
-        <fieldset disabled>
-          <div className="contact-form-row">
-            <label>
-              <span>{t("contact.form.name")}</span>
-              <input
-                type="text"
-                name="name"
-                autoComplete="name"
-                placeholder={t("contact.form.namePlaceholder")}
-              />
-            </label>
-            <label>
-              <span>{t("contact.form.email")}</span>
-              <input
-                type="email"
-                name="email"
-                autoComplete="email"
-                placeholder={t("contact.form.emailPlaceholder")}
-              />
-            </label>
-          </div>
-          <label className="contact-company">
-            <span>{t("contact.form.company")}</span>
-            <input
-              type="text"
-              name="company"
-              autoComplete="organization-title"
-              placeholder={t("contact.form.companyPlaceholder")}
-            />
-          </label>
-          <label>
-            <span>{t("contact.form.message")}</span>
-            <textarea
-              name="message"
-              rows={4}
-              placeholder={t("contact.form.messagePlaceholder")}
-            />
-          </label>
-          <div className="contact-submit-row">
-            <button type="submit">{t("contact.form.submit")}</button>
-          </div>
-        </fieldset>
-        <p id="contact-form-status" className="contact-form-status">
-          {t("contact.form.unavailable")} {t("contact.form.emailInstead")}{" "}
-          <a href={SITE_CONFIG.links.email}>{emailAddress}</a>
+        <p>{t("contact.about.biography")}</p>
+        <p>{t("contact.about.invitation")}</p>
+        <p className="contact-availability">
+          <span aria-hidden="true" />
+          {t("contact.availability")}
         </p>
-      </motion.form>
+      </motion.article>
 
       <motion.aside
         className="contact-panel contact-connections"
@@ -188,6 +125,61 @@ export function ContactSection() {
           })}
         </div>
       </motion.aside>
+
+      <motion.form
+        className="contact-panel contact-form"
+        aria-labelledby="contact-form-title"
+        aria-describedby="contact-form-status"
+        variants={createRevealVariants(reduceMotion, 0.44)}
+      >
+        <div className="contact-panel-heading">
+          <h3 id="contact-form-title">{t("contact.form.title")}</h3>
+        </div>
+        <fieldset disabled>
+          <label>
+            <span>{t("contact.form.name")}</span>
+            <input
+              type="text"
+              name="name"
+              autoComplete="name"
+              placeholder={t("contact.form.namePlaceholder")}
+            />
+          </label>
+          <label>
+            <span>{t("contact.form.email")}</span>
+            <input
+              type="email"
+              name="email"
+              autoComplete="email"
+              placeholder={t("contact.form.emailPlaceholder")}
+            />
+          </label>
+          <label>
+            <span>{t("contact.form.company")}</span>
+            <input
+              type="text"
+              name="company"
+              autoComplete="organization-title"
+              placeholder={t("contact.form.companyPlaceholder")}
+            />
+          </label>
+          <label>
+            <span>{t("contact.form.message")}</span>
+            <textarea
+              name="message"
+              rows={4}
+              placeholder={t("contact.form.messagePlaceholder")}
+            />
+          </label>
+          <div className="contact-submit-row">
+            <button type="submit">{t("contact.form.submit")}</button>
+          </div>
+        </fieldset>
+        <p id="contact-form-status" className="contact-form-status">
+          {t("contact.form.unavailable")} {t("contact.form.emailInstead")}{" "}
+          <a href={SITE_CONFIG.links.email}>{emailAddress}</a>
+        </p>
+      </motion.form>
     </motion.section>
   );
 }

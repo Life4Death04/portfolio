@@ -130,10 +130,13 @@ export const es = {
     title: "Ponte en contacto",
     titleLead: "Ponte en",
     titleAccent: "contacto",
-    portraitDescription: "Marcador de retrato de Santiago Rodríguez",
-    portraitLabel: "Retrato / 4:5",
-    figureLabel: "Fig. 03",
-    note: "Leo todos los mensajes y suelo responder en un día. Háblame del puesto, del equipo y de las tecnologías, o simplemente salúdame.",
+    about: {
+      title: "Un poco sobre mí",
+      biography:
+        "Soy desarrollador full-stack y vivo en Madrid. Trabajo principalmente con React, Node.js y TypeScript. Actualmente estoy terminando la carrera de Ingeniería de Sistemas y busco mi primer puesto a tiempo completo en un equipo de producto.",
+      invitation:
+        "Leo todos los mensajes y suelo responder en un día. Háblame del puesto, del equipo y de las tecnologías, o simplemente salúdame.",
+    },
     elsewhere: "Otros sitios",
     form: {
       title: "Envíame un mensaje",

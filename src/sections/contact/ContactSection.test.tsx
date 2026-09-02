@@ -5,34 +5,24 @@ import { i18n } from "../../i18n";
 import { ContactSection } from "./ContactSection";
 
 describe("ContactSection", () => {
-  it("renders the selected Contact design and the configured direct email", () => {
+  it("renders the three panels in semantic order without a portrait", () => {
     render(<ContactSection />);
 
     const section = screen.getByRole("region", {
       name: "Get in Touch",
     });
+    const panels = section.querySelectorAll(":scope > .contact-panel");
 
+    expect(panels).toHaveLength(3);
     expect(
-      within(section).getByRole("img", {
-        name: "Portrait placeholder for Santiago Rodríguez",
-      }),
-    ).toBeInTheDocument();
-    expect(within(section).getByText("Portrait / 4:5")).toBeInTheDocument();
+      Array.from(panels, (panel) =>
+        panel.querySelector(".contact-panel-heading")?.textContent?.trim(),
+      ),
+    ).toEqual(["A bit about me", "Elsewhere", "Send me a message"]);
+    expect(section.querySelector("img")).not.toBeInTheDocument();
     expect(
-      within(section).getByRole("heading", { name: "Send me a message" }),
+      within(section).getByText(/full-stack developer based in Madrid/),
     ).toBeInTheDocument();
-    expect(
-      within(section).getByRole("heading", { name: "Elsewhere" }),
-    ).toBeInTheDocument();
-
-    const form = section.querySelector("form");
-    const elsewhere = within(section)
-      .getByRole("heading", { name: "Elsewhere" })
-      .closest("aside");
-
-    expect(form?.parentElement).toBe(section);
-    expect(elsewhere?.parentElement).toBe(section);
-    expect(form?.nextElementSibling).toBe(elsewhere);
     expect(
       within(section).getByRole("link", { name: "hello@santiago.dev" }),
     ).toHaveAttribute("href", SITE_CONFIG.links.email);
@@ -41,7 +31,9 @@ describe("ContactSection", () => {
   it("keeps unavailable controls honest and non-interactive", () => {
     render(<ContactSection />);
 
-    expect(screen.getByRole("group")).toBeDisabled();
+    const form = screen.getByRole("form", { name: "Send me a message" });
+
+    expect(within(form).getByRole("group")).toBeDisabled();
     expect(screen.getByRole("button", { name: "Send message" })).toBeDisabled();
     expect(
       screen.getByText(/Contact form unavailable\. Email me directly at/),
@@ -61,6 +53,7 @@ describe("ContactSection", () => {
     expect(
       screen.queryByRole("link", { name: /LinkedIn/i }),
     ).not.toBeInTheDocument();
+    expect(within(form).getByLabelText("Company / role")).toBeDisabled();
   });
 
   it("renders neutral professional Spanish", async () => {
@@ -69,6 +62,12 @@ describe("ContactSection", () => {
 
     const section = screen.getByRole("region", { name: "Ponte en contacto" });
 
+    expect(
+      within(section).getByRole("heading", { name: "Un poco sobre mí" }),
+    ).toBeInTheDocument();
+    expect(
+      within(section).getByText(/Actualmente estoy terminando la carrera/),
+    ).toBeInTheDocument();
     expect(
       within(section).getByLabelText("Correo electrónico"),
     ).toHaveAttribute("placeholder", "ana@empresa.com");

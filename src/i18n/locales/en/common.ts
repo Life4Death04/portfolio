@@ -129,10 +129,13 @@ export const en = {
     title: "Get in Touch",
     titleLead: "Get in",
     titleAccent: "Touch",
-    portraitDescription: "Portrait placeholder for Santiago Rodríguez",
-    portraitLabel: "Portrait / 4:5",
-    figureLabel: "Fig. 03",
-    note: "I read every message and usually reply within a day. Tell me about the role, the team and the stack — or just say hello.",
+    about: {
+      title: "A bit about me",
+      biography:
+        "I'm a full-stack developer based in Madrid, working mostly with React, Node.js and TypeScript. Right now I'm finishing my Systems Engineering degree and looking for my first full-time role on a product team.",
+      invitation:
+        "I read every message and usually reply within a day. Tell me about the role, the team and the stack — or just say hello.",
+    },
     elsewhere: "Elsewhere",
     form: {
       title: "Send me a message",
