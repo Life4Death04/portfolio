@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next";
 import { PROJECTS, type ProjectAction, type ProjectRecord } from "./projects";
 
 const PROJECTS_EASING = [0.2, 0.7, 0.2, 1] as const;
-const CARD_DELAYS = [0.1, 0.18, 0.26] as const;
+const CARD_DELAYS = [0.24, 0.34, 0.44] as const;
 
 function createProjectsRevealVariants(
   reduceMotion: boolean,
@@ -19,8 +19,8 @@ function createProjectsRevealVariants(
       opacity: 1,
       y: 0,
       transition: reduceMotion
-        ? { duration: 0 }
-        : { duration: 0.85, ease: PROJECTS_EASING, delay },
+        ? { duration: 0, delay: 0 }
+        : { duration: 1, ease: PROJECTS_EASING, delay },
     },
   };
 }
@@ -44,7 +44,7 @@ export function ProjectsSection() {
     >
       <motion.header
         className="projects-intro"
-        variants={createProjectsRevealVariants(reduceMotion)}
+        variants={createProjectsRevealVariants(reduceMotion, 0.14)}
       >
         <h2
           id="projects-title"

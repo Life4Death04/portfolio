@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next";
 import { SKILL_GROUPS } from "./skills";
 
 const SKILLS_EASING = [0.2, 0.7, 0.2, 1] as const;
-const CARD_DELAYS = [0.1, 0.18, 0.26] as const;
+const CARD_DELAYS = [0.24, 0.34, 0.44] as const;
 
 function createSkillsRevealVariants(
   reduceMotion: boolean,
@@ -19,8 +19,8 @@ function createSkillsRevealVariants(
       opacity: 1,
       y: 0,
       transition: reduceMotion
-        ? { duration: 0 }
-        : { duration: 0.85, ease: SKILLS_EASING, delay },
+        ? { duration: 0, delay: 0 }
+        : { duration: 1, ease: SKILLS_EASING, delay },
     },
   };
 }
@@ -28,7 +28,7 @@ function createSkillsRevealVariants(
 export function SkillsSection() {
   const { t } = useTranslation();
   const reduceMotion = useReducedMotion() ?? false;
-  const introVariants = createSkillsRevealVariants(reduceMotion);
+  const introVariants = createSkillsRevealVariants(reduceMotion, 0.14);
 
   return (
     <motion.section

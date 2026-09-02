@@ -17,7 +17,7 @@ function createFadeUpVariants(reduceMotion: boolean, delay = 0): Variants {
       y: 0,
       transition: reduceMotion
         ? { duration: 0, delay: 0 }
-        : { duration: 0.85, ease: ABOUT_EASING, delay },
+        : { duration: 1, ease: ABOUT_EASING, delay },
     },
   };
 }
@@ -35,7 +35,7 @@ function createPortraitVariants(reduceMotion: boolean): Variants {
       clipPath: "inset(0 0 0 0)",
       transition: reduceMotion
         ? { duration: 0, delay: 0 }
-        : { duration: 1, ease: ABOUT_EASING, delay: 0.1 },
+        : { duration: 1.1, ease: ABOUT_EASING, delay: 0.24 },
     },
   };
 }
@@ -84,7 +84,7 @@ export function AboutSection() {
     >
       <motion.header
         className="about-heading"
-        variants={createFadeUpVariants(reduceMotion)}
+        variants={createFadeUpVariants(reduceMotion, 0.14)}
       >
         <h2
           id="about-title"
@@ -118,14 +118,14 @@ export function AboutSection() {
 
       <motion.p
         className="about-description"
-        variants={createFadeUpVariants(reduceMotion, 0.1)}
+        variants={createFadeUpVariants(reduceMotion, 0.34)}
       >
         {t("about.description")}
       </motion.p>
 
       <motion.dl
         className="about-facts"
-        variants={createFadeUpVariants(reduceMotion, 0.2)}
+        variants={createFadeUpVariants(reduceMotion, 0.44)}
       >
         {FACTS.map((fact) => (
           <div key={fact}>
@@ -137,7 +137,7 @@ export function AboutSection() {
 
       <motion.div
         className="about-actions"
-        variants={createFadeUpVariants(reduceMotion, 0.28)}
+        variants={createFadeUpVariants(reduceMotion, 0.54)}
       >
         <a className="about-contact" href={SITE_CONFIG.links.email}>
           {t("about.actions.contact")}
