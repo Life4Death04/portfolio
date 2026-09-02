@@ -44,7 +44,7 @@ export function SiteHeader() {
             {t(item.key)}
           </a>
         ))}
-        <a className="header-contact" href={SITE_CONFIG.links.email}>
+        <a className="header-contact" href={SITE_CONFIG.links.contact}>
           {t("navigation.contact")}
         </a>
       </nav>
@@ -79,7 +79,7 @@ export function SiteHeader() {
                 {t(item.key)}
               </a>
             ))}
-            <a href={SITE_CONFIG.links.email} onClick={closeMenu}>
+            <a href={SITE_CONFIG.links.contact} onClick={closeMenu}>
               {t("navigation.contact")}
             </a>
           </motion.nav>

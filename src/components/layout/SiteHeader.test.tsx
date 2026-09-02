@@ -21,6 +21,10 @@ describe("SiteHeader", () => {
       "href",
       "#skills",
     );
+    expect(screen.getByRole("link", { name: "Get in touch" })).toHaveAttribute(
+      "href",
+      "#contact",
+    );
   });
 
   it("opens and closes the accessible mobile menu", async () => {

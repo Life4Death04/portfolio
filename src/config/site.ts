@@ -10,6 +10,7 @@ export const SITE_CONFIG = {
     skills: "#skills",
     projects: "#projects",
     about: "#about",
+    contact: "#contact",
     email: "mailto:hello@santiago.dev",
     github: "https://github.com/replace-with-santiago",
     linkedin: "https://www.linkedin.com/in/replace-with-santiago",
