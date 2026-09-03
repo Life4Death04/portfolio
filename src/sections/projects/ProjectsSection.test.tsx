@@ -74,7 +74,7 @@ describe("ProjectsSection", () => {
     EXPECTED_PROJECTS.forEach(({ title }) => {
       expect(
         within(section).getByRole("img", {
-          name: `Project shot placeholder for ${title}`,
+          name: `Decorative case-study plate for ${title}`,
         }),
       ).toBeInTheDocument();
     });
@@ -83,6 +83,20 @@ describe("ProjectsSection", () => {
     expect(
       within(section).queryByText(/Lighthouse|%/i),
     ).not.toBeInTheDocument();
+  });
+
+  it("renders three distinct decorative case-study plates", () => {
+    const { container } = render(<ProjectsSection />);
+    const visuals = Array.from(
+      container.querySelectorAll("[data-project-visual]"),
+    );
+
+    expect(
+      visuals.map((visual) => visual.getAttribute("data-project-visual")),
+    ).toEqual(["ecommerce", "blog", "tasks"]);
+    visuals.forEach((visual) =>
+      expect(visual).toHaveAttribute("aria-hidden", "true"),
+    );
   });
 
   it("renders professional neutral Spanish while preserving technology names", async () => {
@@ -98,7 +112,7 @@ describe("ProjectsSection", () => {
     ).toBeInTheDocument();
     expect(
       within(section).getByRole("img", {
-        name: "Marcador de imagen del proyecto Plataforma de comercio electrónico con Stripe",
+        name: "Lámina decorativa del proyecto Plataforma de comercio electrónico con Stripe",
       }),
     ).toBeInTheDocument();
     expect(within(section).getAllByText("React.js")).toHaveLength(3);

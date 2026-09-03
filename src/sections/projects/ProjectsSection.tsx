@@ -1,6 +1,7 @@
 import { motion, useReducedMotion } from "motion/react";
 import type { Variants } from "motion/react";
 import { useTranslation } from "react-i18next";
+import { ProjectVisual } from "./ProjectVisual";
 import { PROJECTS, type ProjectAction, type ProjectRecord } from "./projects";
 
 const PROJECTS_EASING = [0.2, 0.7, 0.2, 1] as const;
@@ -80,10 +81,7 @@ export function ProjectsSection() {
                 role="img"
                 aria-label={t("projects.mediaLabel", { title })}
               >
-                <span aria-hidden="true">
-                  {t("projects.mediaPlaceholder")}
-                  <span className="project-media-ratio"> / 16:10</span>
-                </span>
+                <ProjectVisual kind={project.key} />
               </div>
 
               <article className="project-content">

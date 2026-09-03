@@ -73,7 +73,7 @@ export const en = {
     descriptionDetail:
       " Each project is a demonstration of my skills in creating solid user experiences and optimized code.",
     mediaPlaceholder: "Project shot",
-    mediaLabel: "Project shot placeholder for {{title}}",
+    mediaLabel: "Decorative case-study plate for {{title}}",
     technologiesLabel: "Technologies used in {{title}}",
     more: "+{{count}} more",
     actions: {

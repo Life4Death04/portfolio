@@ -1,4 +1,9 @@
-import { AnimatePresence, motion, useReducedMotion } from "motion/react";
+import {
+  AnimatePresence,
+  motion,
+  useReducedMotion,
+  useScroll,
+} from "motion/react";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import {
@@ -23,7 +28,9 @@ export function SiteHeader() {
   const [isOpen, setIsOpen] = useState(false);
   const [hasFocus, setHasFocus] = useState(false);
   const [isScrollVisible, setIsScrollVisible] = useState(true);
+  const [activeSection, setActiveSection] = useState("home");
   const reduceMotion = useReducedMotion();
+  const { scrollYProgress } = useScroll();
 
   useEffect(() => {
     if (!isOpen) return;
@@ -61,6 +68,30 @@ export function SiteHeader() {
     return () => window.removeEventListener("scroll", updateHeaderVisibility);
   }, []);
 
+  useEffect(() => {
+    const sections = [
+      ...navigation.map((item) => item.href.slice(1)),
+      SITE_CONFIG.links.contact.slice(1),
+    ];
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visibleSection = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+
+        if (visibleSection) setActiveSection(visibleSection.target.id);
+      },
+      { rootMargin: "-28% 0px -58%", threshold: [0, 0.25, 0.5, 0.75] },
+    );
+
+    sections.forEach((id) => {
+      const section = document.getElementById(id);
+      if (section) observer.observe(section);
+    });
+
+    return () => observer.disconnect();
+  }, []);
+
   const closeMenu = () => setIsOpen(false);
   const isVisible = reduceMotion || isOpen || hasFocus || isScrollVisible;
   const currentLanguage = normalizeLanguage(i18n.resolvedLanguage);
@@ -81,23 +112,34 @@ export function SiteHeader() {
       }
     >
       <div className="progress-rule" aria-hidden="true">
-        <span />
+        <motion.span style={{ scaleX: reduceMotion ? 1 : scrollYProgress }} />
       </div>
       <a className="site-name" href={SITE_CONFIG.links.home}>
         {t("site.name")}
       </a>
 
       <nav className="desktop-navigation" aria-label={t("navigation.label")}>
-        {navigation.map((item, index) => (
-          <a
-            className={index === 0 ? "active" : undefined}
-            href={item.href}
-            key={item.key}
-          >
-            {t(item.key)}
-          </a>
-        ))}
-        <a href={SITE_CONFIG.links.contact}>{t("navigation.contact")}</a>
+        {navigation.map((item) => {
+          const isActive = activeSection === item.href.slice(1);
+
+          return (
+            <a
+              className={isActive ? "active" : undefined}
+              href={item.href}
+              key={item.key}
+              aria-current={isActive ? "location" : undefined}
+            >
+              {t(item.key)}
+            </a>
+          );
+        })}
+        <a
+          className={activeSection === "contact" ? "active" : undefined}
+          href={SITE_CONFIG.links.contact}
+          aria-current={activeSection === "contact" ? "location" : undefined}
+        >
+          {t("navigation.contact")}
+        </a>
       </nav>
 
       <div
@@ -152,12 +194,29 @@ export function SiteHeader() {
             exit={reduceMotion ? { opacity: 1 } : { opacity: 0, y: -8 }}
             transition={{ duration: reduceMotion ? 0 : 0.2 }}
           >
-            {navigation.map((item) => (
-              <a href={item.href} key={item.key} onClick={closeMenu}>
-                {t(item.key)}
-              </a>
-            ))}
-            <a href={SITE_CONFIG.links.contact} onClick={closeMenu}>
+            {navigation.map((item) => {
+              const isActive = activeSection === item.href.slice(1);
+
+              return (
+                <a
+                  className={isActive ? "active" : undefined}
+                  href={item.href}
+                  key={item.key}
+                  aria-current={isActive ? "location" : undefined}
+                  onClick={closeMenu}
+                >
+                  {t(item.key)}
+                </a>
+              );
+            })}
+            <a
+              className={activeSection === "contact" ? "active" : undefined}
+              href={SITE_CONFIG.links.contact}
+              aria-current={
+                activeSection === "contact" ? "location" : undefined
+              }
+              onClick={closeMenu}
+            >
               {t("navigation.contact")}
             </a>
           </motion.nav>

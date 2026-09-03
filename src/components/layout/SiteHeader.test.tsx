@@ -1,10 +1,18 @@
-import { fireEvent, render, screen, waitFor } from "@testing-library/react";
+import {
+  act,
+  fireEvent,
+  render,
+  screen,
+  waitFor,
+} from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { describe, expect, it } from "vitest";
+import { afterEach, describe, expect, it, vi } from "vitest";
 import { LANGUAGE_STORAGE_KEY } from "../../i18n";
 import { SiteHeader } from "./SiteHeader";
 
 describe("SiteHeader", () => {
+  afterEach(() => vi.unstubAllGlobals());
+
   const scrollTo = (scrollY: number) => {
     Object.defineProperty(window, "scrollY", {
       configurable: true,
@@ -38,6 +46,59 @@ describe("SiteHeader", () => {
     expect(
       screen.getByRole("button", { name: "Switch to English" }),
     ).toHaveAttribute("aria-pressed", "true");
+  });
+
+  it("marks the observed section as the current navigation location", () => {
+    let observerCallback: IntersectionObserverCallback = () => undefined;
+
+    class ActiveSectionObserver {
+      constructor(callback: IntersectionObserverCallback) {
+        observerCallback = callback;
+      }
+
+      disconnect() {}
+      observe() {}
+      unobserve() {}
+    }
+
+    vi.stubGlobal("IntersectionObserver", ActiveSectionObserver);
+    render(
+      <>
+        <SiteHeader />
+        <section id="home" />
+        <section id="skills" />
+        <section id="projects" />
+        <section id="about" />
+        <section id="contact" />
+      </>,
+    );
+
+    expect(screen.getByRole("link", { name: "Index" })).toHaveAttribute(
+      "aria-current",
+      "location",
+    );
+
+    const projects = document.getElementById("projects");
+    act(() => {
+      observerCallback(
+        [
+          {
+            target: projects,
+            isIntersecting: true,
+            intersectionRatio: 0.75,
+          } as unknown as IntersectionObserverEntry,
+        ],
+        {} as IntersectionObserver,
+      );
+    });
+
+    expect(screen.getByRole("link", { name: "Work" })).toHaveAttribute(
+      "aria-current",
+      "location",
+    );
+    expect(screen.getByRole("link", { name: "Index" })).not.toHaveAttribute(
+      "aria-current",
+    );
   });
 
   it("switches language accessibly and persists the selection", async () => {

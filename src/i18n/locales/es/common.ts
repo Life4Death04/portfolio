@@ -73,7 +73,7 @@ export const es = {
     descriptionDetail:
       " Cada proyecto demuestra mis habilidades para crear experiencias de usuario sólidas y código optimizado.",
     mediaPlaceholder: "Imagen del proyecto",
-    mediaLabel: "Marcador de imagen del proyecto {{title}}",
+    mediaLabel: "Lámina decorativa del proyecto {{title}}",
     technologiesLabel: "Tecnologías utilizadas en {{title}}",
     more: "+{{count}} más",
     actions: {
