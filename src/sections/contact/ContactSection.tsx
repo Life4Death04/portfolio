@@ -4,9 +4,10 @@ import { SITE_CONFIG } from "../../config/site";
 import { createRevealVariants } from "../../lib/motion";
 
 const CONTACT_ACTIONS = [
-  { key: "github", direction: "external" },
-  { key: "linkedin", direction: "external" },
-  { key: "downloadCv", direction: "download" },
+  { key: "github", direction: "external", available: false },
+  { key: "linkedin", direction: "external", available: false },
+  { key: "downloadCv", direction: "download", available: false },
+  { key: "email", direction: "external", available: true },
 ] as const;
 
 function GitHubIcon() {
@@ -40,10 +41,25 @@ function DownloadIcon() {
   );
 }
 
+function EmailIcon() {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      aria-hidden="true"
+    >
+      <rect x="3" y="5" width="18" height="14" rx="2" />
+      <path d="m4 7 8 6 8-6" />
+    </svg>
+  );
+}
+
 const ACTION_ICONS = {
   github: <GitHubIcon />,
   linkedin: <LinkedInIcon />,
   downloadCv: <DownloadIcon />,
+  email: <EmailIcon />,
 } as const;
 
 export function ContactSection() {
@@ -64,122 +80,146 @@ export function ContactSection() {
         className="contact-heading"
         variants={createRevealVariants(reduceMotion, 0.14)}
       >
-        <h2
-          id="contact-title"
-          className="contact-title"
-          aria-label={t("contact.title")}
-        >
-          <span>{t("contact.titleLead")}</span>
-          <span>{t("contact.titleAccent")}</span>
-        </h2>
+        <div className="contact-heading-row">
+          <h2 id="contact-title" className="contact-title">
+            {t("contact.title")}
+          </h2>
+          <p className="contact-availability">
+            <span aria-hidden="true" />
+            {t("contact.availability")}
+          </p>
+        </div>
       </motion.header>
 
-      <motion.article
-        className="contact-panel contact-about"
-        aria-labelledby="contact-about-title"
-        variants={createRevealVariants(reduceMotion, 0.24)}
-      >
-        <div className="contact-panel-heading">
-          <h3 id="contact-about-title">{t("contact.about.title")}</h3>
-        </div>
-        <p>{t("contact.about.biography")}</p>
-        <p>{t("contact.about.invitation")}</p>
-        <p className="contact-availability">
-          <span aria-hidden="true" />
-          {t("contact.availability")}
-        </p>
-      </motion.article>
-
-      <motion.aside
-        className="contact-panel contact-connections"
-        aria-labelledby="contact-elsewhere-title"
-        variants={createRevealVariants(reduceMotion, 0.34)}
-      >
-        <div className="contact-panel-heading">
-          <h3 id="contact-elsewhere-title">{t("contact.elsewhere")}</h3>
-        </div>
-        <div className="contact-action-list">
-          {CONTACT_ACTIONS.map((action) => {
-            const label = t(`contact.actions.${action.key}`);
-
-            return (
-              <button
-                className="contact-action"
-                type="button"
-                disabled
-                key={action.key}
-                aria-label={t("contact.actions.unavailable", { name: label })}
-              >
-                <span className="contact-action-label">
-                  {ACTION_ICONS[action.key]}
-                  <span>
-                    <strong>{label}</strong>
-                    <small>{t("contact.actions.pending")}</small>
-                  </span>
-                </span>
-                <span className="contact-action-direction" aria-hidden="true">
-                  {action.direction === "download" ? "↓" : "↗"}
-                </span>
-              </button>
-            );
-          })}
-        </div>
-      </motion.aside>
-
-      <motion.form
-        className="contact-panel contact-form"
-        aria-labelledby="contact-form-title"
-        aria-describedby="contact-form-status"
-        variants={createRevealVariants(reduceMotion, 0.44)}
-      >
-        <div className="contact-panel-heading">
-          <h3 id="contact-form-title">{t("contact.form.title")}</h3>
-        </div>
-        <fieldset disabled>
-          <label>
-            <span>{t("contact.form.name")}</span>
-            <input
-              type="text"
-              name="name"
-              autoComplete="name"
-              placeholder={t("contact.form.namePlaceholder")}
-            />
-          </label>
-          <label>
-            <span>{t("contact.form.email")}</span>
-            <input
-              type="email"
-              name="email"
-              autoComplete="email"
-              placeholder={t("contact.form.emailPlaceholder")}
-            />
-          </label>
-          <label>
-            <span>{t("contact.form.company")}</span>
-            <input
-              type="text"
-              name="company"
-              autoComplete="organization-title"
-              placeholder={t("contact.form.companyPlaceholder")}
-            />
-          </label>
-          <label>
-            <span>{t("contact.form.message")}</span>
-            <textarea
-              name="message"
-              rows={4}
-              placeholder={t("contact.form.messagePlaceholder")}
-            />
-          </label>
-          <div className="contact-submit-row">
-            <button type="submit">{t("contact.form.submit")}</button>
+      <div className="contact-body">
+        <motion.form
+          className="contact-form"
+          aria-labelledby="contact-form-title"
+          aria-describedby="contact-form-status contact-form-trust"
+          variants={createRevealVariants(reduceMotion, 0.44)}
+        >
+          <div className="contact-form-heading">
+            <h3 id="contact-form-title">{t("contact.form.title")}</h3>
+            <p>{t("contact.form.replyTime")}</p>
           </div>
-        </fieldset>
-        <p id="contact-form-status" className="contact-form-status">
-          {t("contact.form.unavailable")} {t("contact.form.emailInstead")}{" "}
-          <a href={SITE_CONFIG.links.email}>{emailAddress}</a>
-        </p>
-      </motion.form>
+          <fieldset disabled>
+            <div className="contact-field-grid">
+              <label>
+                <span>{t("contact.form.name")}</span>
+                <input
+                  type="text"
+                  name="name"
+                  autoComplete="name"
+                  placeholder={t("contact.form.namePlaceholder")}
+                />
+              </label>
+              <label>
+                <span>{t("contact.form.email")}</span>
+                <input
+                  type="email"
+                  name="email"
+                  autoComplete="email"
+                  placeholder={t("contact.form.emailPlaceholder")}
+                />
+              </label>
+              <label className="contact-field-wide">
+                <span>{t("contact.form.company")}</span>
+                <input
+                  type="text"
+                  name="company"
+                  autoComplete="organization-title"
+                  placeholder={t("contact.form.companyPlaceholder")}
+                />
+              </label>
+              <label className="contact-field-wide">
+                <span>{t("contact.form.message")}</span>
+                <textarea
+                  name="message"
+                  rows={5}
+                  placeholder={t("contact.form.messagePlaceholder")}
+                />
+              </label>
+            </div>
+            <button className="contact-submit" type="submit">
+              {t("contact.form.submit")}
+              <span aria-hidden="true">↗</span>
+            </button>
+          </fieldset>
+          <p id="contact-form-status" className="contact-form-status">
+            {t("contact.form.unavailable")} {t("contact.form.emailInstead")}{" "}
+            <a href={SITE_CONFIG.links.email}>{emailAddress}</a>
+          </p>
+          <p id="contact-form-trust" className="contact-form-trust">
+            <span aria-hidden="true">◇</span>
+            {t("contact.form.trust")}
+          </p>
+        </motion.form>
+
+        <div className="contact-rail">
+          <motion.aside
+            className="contact-block contact-connections"
+            variants={createRevealVariants(reduceMotion, 0.24)}
+          >
+            <div className="contact-action-list">
+              {CONTACT_ACTIONS.map((action) => {
+                const label = t(`contact.actions.${action.key}`);
+                const content = (
+                  <>
+                    <span className="contact-action-label">
+                      {ACTION_ICONS[action.key]}
+                      <span>
+                        <strong>{label}</strong>
+                        <small>
+                          {t(
+                            action.available
+                              ? "contact.actions.emailAvailable"
+                              : "contact.actions.pending",
+                          )}
+                        </small>
+                      </span>
+                    </span>
+                    <span
+                      className="contact-action-direction"
+                      aria-hidden="true"
+                    >
+                      {action.direction === "download" ? "↓" : "↗"}
+                    </span>
+                  </>
+                );
+
+                return action.available ? (
+                  <a
+                    className="contact-action"
+                    href={SITE_CONFIG.links.email}
+                    key={action.key}
+                  >
+                    {content}
+                  </a>
+                ) : (
+                  <button
+                    className="contact-action"
+                    type="button"
+                    disabled
+                    key={action.key}
+                    aria-label={t("contact.actions.unavailable", {
+                      name: label,
+                    })}
+                  >
+                    {content}
+                  </button>
+                );
+              })}
+            </div>
+          </motion.aside>
+
+          <motion.article
+            className="contact-block contact-about"
+            variants={createRevealVariants(reduceMotion, 0.34)}
+          >
+            <p>{t("contact.about.biography")}</p>
+          </motion.article>
+        </div>
+      </div>
     </motion.section>
   );
 }

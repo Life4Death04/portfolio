@@ -13,6 +13,11 @@ export const en = {
     openMenu: "Open navigation menu",
     closeMenu: "Close navigation menu",
   },
+  language: {
+    label: "Language",
+    english: "Switch to English",
+    spanish: "Switch to Spanish",
+  },
   home: {
     availability: "Available for new work — September 2026",
     name: "Santiago Rodríguez",
@@ -126,19 +131,18 @@ export const en = {
   },
   contact: {
     eyebrow: "Contact",
-    title: "Get in Touch",
+    title: "Get in touch",
     titleLead: "Get in",
     titleAccent: "Touch",
     about: {
       title: "A bit about me",
       biography:
         "I'm a full-stack developer based in Madrid, working mostly with React, Node.js and TypeScript. Right now I'm finishing my Systems Engineering degree and looking for my first full-time role on a product team.",
-      invitation:
-        "I read every message and usually reply within a day. Tell me about the role, the team and the stack — or just say hello.",
     },
     elsewhere: "Elsewhere",
     form: {
       title: "Send me a message",
+      replyTime: "I usually reply within one working day.",
       name: "Your name",
       namePlaceholder: "Jane Doe",
       email: "Email",
@@ -150,11 +154,14 @@ export const en = {
       submit: "Send message",
       unavailable: "Contact form unavailable.",
       emailInstead: "Email me directly at",
+      trust: "Nothing entered here is stored or sent.",
     },
     actions: {
       github: "GitHub",
       linkedin: "LinkedIn",
       downloadCv: "Download CV",
+      email: "Email",
+      emailAvailable: "Write directly",
       pending: "Not yet available",
       unavailable: "{{name}} unavailable",
     },

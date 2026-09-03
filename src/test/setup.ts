@@ -22,4 +22,5 @@ globalThis.IntersectionObserver = IntersectionObserverMock;
 afterEach(async () => {
   cleanup();
   await i18n.changeLanguage("en");
+  localStorage.clear();
 });

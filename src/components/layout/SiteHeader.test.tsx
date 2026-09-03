@@ -1,6 +1,7 @@
 import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { describe, expect, it } from "vitest";
+import { LANGUAGE_STORAGE_KEY } from "../../i18n";
 import { SiteHeader } from "./SiteHeader";
 
 describe("SiteHeader", () => {
@@ -33,6 +34,30 @@ describe("SiteHeader", () => {
       "href",
       "#contact",
     );
+    expect(screen.getByRole("group", { name: "Language" })).toBeInTheDocument();
+    expect(
+      screen.getByRole("button", { name: "Switch to English" }),
+    ).toHaveAttribute("aria-pressed", "true");
+  });
+
+  it("switches language accessibly and persists the selection", async () => {
+    const user = userEvent.setup();
+    render(<SiteHeader />);
+
+    await user.click(screen.getByRole("button", { name: "Switch to Spanish" }));
+
+    expect(
+      screen.getByRole("navigation", { name: "Navegación principal" }),
+    ).toBeInTheDocument();
+    expect(screen.getByRole("link", { name: "Proyectos" })).toHaveAttribute(
+      "href",
+      "#projects",
+    );
+    expect(
+      screen.getByRole("button", { name: "Cambiar a español" }),
+    ).toHaveAttribute("aria-pressed", "true");
+    expect(document.documentElement).toHaveAttribute("lang", "es");
+    expect(localStorage.getItem(LANGUAGE_STORAGE_KEY)).toBe("es");
   });
 
   it("opens and closes the accessible mobile menu", async () => {

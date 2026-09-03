@@ -1,7 +1,8 @@
 import { render, screen, within } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 import { describe, expect, it } from "vitest";
 import { SITE_CONFIG } from "../config/site";
-import { i18n } from "../i18n";
+import { LANGUAGE_STORAGE_KEY } from "../i18n";
 import { App } from "./App";
 
 describe("App", () => {
@@ -44,9 +45,11 @@ describe("App", () => {
     expect(sections[3].nextElementSibling).toBe(sections[4]);
   });
 
-  it("renders Home in Spanish without relying on navigator language", async () => {
-    await i18n.changeLanguage("es");
+  it("switches the entire localized site to Spanish and retains the choice", async () => {
+    const user = userEvent.setup();
     render(<App />);
+
+    await user.click(screen.getByRole("button", { name: "Switch to Spanish" }));
 
     expect(screen.getByText("Desarrollador frontend")).toBeInTheDocument();
     expect(screen.getByText("Interfaces creadas")).toBeInTheDocument();
@@ -67,5 +70,10 @@ describe("App", () => {
         name: "Santiago Rodríguez con traje negro y corbata",
       }),
     ).toHaveAttribute("src", SITE_CONFIG.images.portrait);
+    expect(
+      screen.getByRole("navigation", { name: "Navegación principal" }),
+    ).toBeInTheDocument();
+    expect(document.documentElement).toHaveAttribute("lang", "es");
+    expect(localStorage.getItem(LANGUAGE_STORAGE_KEY)).toBe("es");
   });
 });

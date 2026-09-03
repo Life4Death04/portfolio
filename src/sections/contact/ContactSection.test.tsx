@@ -5,26 +5,32 @@ import { i18n } from "../../i18n";
 import { ContactSection } from "./ContactSection";
 
 describe("ContactSection", () => {
-  it("renders the three panels in semantic order without a portrait", () => {
+  it("renders the form before the contact rail in semantic source order", () => {
     render(<ContactSection />);
 
     const section = screen.getByRole("region", {
-      name: "Get in Touch",
+      name: "Get in touch",
     });
-    const panels = section.querySelectorAll(":scope > .contact-panel");
+    const form = within(section).getByRole("form", {
+      name: "Send me a message",
+    });
+    const rail = within(section).getByRole("complementary").parentElement;
 
-    expect(panels).toHaveLength(3);
+    expect(rail).not.toBeNull();
+    expect(form.compareDocumentPosition(rail!)).toBe(
+      Node.DOCUMENT_POSITION_FOLLOWING,
+    );
     expect(
-      Array.from(panels, (panel) =>
-        panel.querySelector(".contact-panel-heading")?.textContent?.trim(),
-      ),
-    ).toEqual(["A bit about me", "Elsewhere", "Send me a message"]);
+      within(section).getByText("Open to offers · Remote or Madrid"),
+    ).toBeInTheDocument();
     expect(section.querySelector("img")).not.toBeInTheDocument();
     expect(
       within(section).getByText(/full-stack developer based in Madrid/),
     ).toBeInTheDocument();
     expect(
-      within(section).getByRole("link", { name: "hello@santiago.dev" }),
+      within(section).getAllByRole("link", {
+        name: /Email|hello@santiago.dev/,
+      })[0],
     ).toHaveAttribute("href", SITE_CONFIG.links.email);
   });
 
@@ -37,6 +43,9 @@ describe("ContactSection", () => {
     expect(screen.getByRole("button", { name: "Send message" })).toBeDisabled();
     expect(
       screen.getByText(/Contact form unavailable\. Email me directly at/),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByText("Nothing entered here is stored or sent."),
     ).toBeInTheDocument();
 
     for (const label of [
@@ -53,6 +62,10 @@ describe("ContactSection", () => {
     expect(
       screen.queryByRole("link", { name: /LinkedIn/i }),
     ).not.toBeInTheDocument();
+    expect(screen.getByRole("link", { name: /Email/i })).toHaveAttribute(
+      "href",
+      SITE_CONFIG.links.email,
+    );
     expect(within(form).getByLabelText("Company / role")).toBeDisabled();
   });
 
@@ -63,7 +76,7 @@ describe("ContactSection", () => {
     const section = screen.getByRole("region", { name: "Ponte en contacto" });
 
     expect(
-      within(section).getByRole("heading", { name: "Un poco sobre mí" }),
+      within(section).getByRole("heading", { name: "Envíame un mensaje" }),
     ).toBeInTheDocument();
     expect(
       within(section).getByText(/Actualmente estoy terminando la carrera/),
@@ -76,5 +89,8 @@ describe("ContactSection", () => {
         name: "Descargar CV no disponible",
       }),
     ).toBeDisabled();
+    expect(
+      within(section).getByRole("link", { name: /Correo electrónico/i }),
+    ).toHaveAttribute("href", SITE_CONFIG.links.email);
   });
 });

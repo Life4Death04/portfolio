@@ -1,7 +1,12 @@
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { SITE_CONFIG } from "../../config/site";
+import {
+  SITE_CONFIG,
+  SUPPORTED_LANGUAGES,
+  type SupportedLanguage,
+} from "../../config/site";
+import { normalizeLanguage } from "../../i18n";
 
 const SCROLL_JITTER_THRESHOLD = 8;
 const NEAR_TOP_THRESHOLD = 24;
@@ -14,7 +19,7 @@ const navigation = [
 ] as const;
 
 export function SiteHeader() {
-  const { t } = useTranslation();
+  const { i18n, t } = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
   const [hasFocus, setHasFocus] = useState(false);
   const [isScrollVisible, setIsScrollVisible] = useState(true);
@@ -58,6 +63,11 @@ export function SiteHeader() {
 
   const closeMenu = () => setIsOpen(false);
   const isVisible = reduceMotion || isOpen || hasFocus || isScrollVisible;
+  const currentLanguage = normalizeLanguage(i18n.resolvedLanguage);
+
+  const changeLanguage = (language: SupportedLanguage) => {
+    void i18n.changeLanguage(language);
+  };
 
   return (
     <header
@@ -87,10 +97,35 @@ export function SiteHeader() {
             {t(item.key)}
           </a>
         ))}
-        <a className="header-contact" href={SITE_CONFIG.links.contact}>
-          {t("navigation.contact")}
-        </a>
+        <a href={SITE_CONFIG.links.contact}>{t("navigation.contact")}</a>
       </nav>
+
+      <div
+        className="language-switcher"
+        role="group"
+        aria-label={t("language.label")}
+      >
+        {SUPPORTED_LANGUAGES.map((language, index) => (
+          <span className="language-option" key={language}>
+            {index > 0 && (
+              <span className="language-separator" aria-hidden="true">
+                /
+              </span>
+            )}
+            <button
+              type="button"
+              className={currentLanguage === language ? "active" : undefined}
+              aria-label={t(
+                language === "en" ? "language.english" : "language.spanish",
+              )}
+              aria-pressed={currentLanguage === language}
+              onClick={() => changeLanguage(language)}
+            >
+              {language.toUpperCase()}
+            </button>
+          </span>
+        ))}
+      </div>
 
       <button
         className="menu-button"

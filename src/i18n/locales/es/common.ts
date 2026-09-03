@@ -13,6 +13,11 @@ export const es = {
     openMenu: "Abrir menú de navegación",
     closeMenu: "Cerrar menú de navegación",
   },
+  language: {
+    label: "Idioma",
+    english: "Cambiar a inglés",
+    spanish: "Cambiar a español",
+  },
   home: {
     availability: "Disponible para nuevos proyectos — septiembre de 2026",
     name: "Santiago Rodríguez",
@@ -134,12 +139,11 @@ export const es = {
       title: "Un poco sobre mí",
       biography:
         "Soy desarrollador full-stack y vivo en Madrid. Trabajo principalmente con React, Node.js y TypeScript. Actualmente estoy terminando la carrera de Ingeniería de Sistemas y busco mi primer puesto a tiempo completo en un equipo de producto.",
-      invitation:
-        "Leo todos los mensajes y suelo responder en un día. Háblame del puesto, del equipo y de las tecnologías, o simplemente salúdame.",
     },
     elsewhere: "Otros sitios",
     form: {
       title: "Envíame un mensaje",
+      replyTime: "Suelo responder en un día laborable.",
       name: "Nombre",
       namePlaceholder: "Ana García",
       email: "Correo electrónico",
@@ -151,11 +155,14 @@ export const es = {
       submit: "Enviar mensaje",
       unavailable: "El formulario de contacto no está disponible.",
       emailInstead: "Escríbeme directamente a",
+      trust: "Nada de lo que escribas aquí se almacena ni se envía.",
     },
     actions: {
       github: "GitHub",
       linkedin: "LinkedIn",
       downloadCv: "Descargar CV",
+      email: "Correo electrónico",
+      emailAvailable: "Escribir directamente",
       pending: "Aún no disponible",
       unavailable: "{{name}} no disponible",
     },
