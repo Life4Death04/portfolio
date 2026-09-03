@@ -1,6 +1,7 @@
 import { motion, useReducedMotion } from "motion/react";
 import type { Variants } from "motion/react";
 import { useTranslation } from "react-i18next";
+import { SCROLL_REVEAL_VIEWPORT } from "../../lib/motion";
 import { SKILL_GROUPS } from "./skills";
 
 const SKILLS_EASING = [0.2, 0.7, 0.2, 1] as const;
@@ -37,10 +38,9 @@ export function SkillsSection() {
       aria-labelledby="skills-title"
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, amount: 0.12 }}
+      viewport={SCROLL_REVEAL_VIEWPORT}
     >
       <motion.header className="skills-intro" variants={introVariants}>
-        <p className="section-index">02 / {t("skills.eyebrow")}</p>
         <h2
           id="skills-title"
           className="skills-title"

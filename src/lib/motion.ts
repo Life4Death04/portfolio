@@ -5,6 +5,12 @@ export const MOTION_TRANSITION: Transition = {
   ease: [0.2, 0.7, 0.2, 1],
 };
 
+export const SCROLL_REVEAL_VIEWPORT = {
+  once: true,
+  amount: 0.22,
+  margin: "0px 0px -15% 0px",
+} as const;
+
 export function createRevealVariants(
   reduceMotion: boolean,
   delay = 0,

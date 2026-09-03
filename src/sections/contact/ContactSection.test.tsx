@@ -21,8 +21,8 @@ describe("ContactSection", () => {
       Node.DOCUMENT_POSITION_FOLLOWING,
     );
     expect(
-      within(section).getByText("Open to offers · Remote or Madrid"),
-    ).toBeInTheDocument();
+      within(section).queryByText("Open to offers · Remote or Madrid"),
+    ).not.toBeInTheDocument();
     expect(section.querySelector("img")).not.toBeInTheDocument();
     expect(
       within(section).getByText(/full-stack developer based in Madrid/),

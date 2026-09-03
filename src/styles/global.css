@@ -1524,6 +1524,7 @@ a {
   }
 
   .home-title {
+    margin-top: clamp(16px, 5vw, 24px);
     font-size: clamp(38px, 10.25vw, 42px);
     line-height: 1.06;
     text-align: center;
@@ -1537,12 +1538,13 @@ a {
   }
 
   .portrait-figure {
-    margin-top: 24px;
+    width: min(100%, 400px);
+    justify-self: center;
+    margin: 24px auto 0;
   }
 
   .portrait-placeholder {
-    min-height: 190px;
-    aspect-ratio: 16 / 7;
+    aspect-ratio: 795 / 825;
   }
 
   .metrics {

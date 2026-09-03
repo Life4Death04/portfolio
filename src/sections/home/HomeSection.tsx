@@ -71,11 +71,6 @@ export function HomeSection() {
       initial="hidden"
       animate="visible"
     >
-      <motion.p className="availability" variants={itemVariants}>
-        <span aria-hidden="true" />
-        {t("home.availability")}
-      </motion.p>
-
       <motion.h1 id="home-title" className="home-title" variants={itemVariants}>
         <span>{t("home.name")}</span>
         <span>{t("home.role")}</span>

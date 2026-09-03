@@ -1,7 +1,7 @@
 import { motion, useReducedMotion } from "motion/react";
 import { useTranslation } from "react-i18next";
 import { SITE_CONFIG } from "../../config/site";
-import { createRevealVariants } from "../../lib/motion";
+import { createRevealVariants, SCROLL_REVEAL_VIEWPORT } from "../../lib/motion";
 
 const CONTACT_ACTIONS = [
   { key: "github", direction: "external", available: false },
@@ -74,7 +74,7 @@ export function ContactSection() {
       aria-labelledby="contact-title"
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, amount: 0.12 }}
+      viewport={SCROLL_REVEAL_VIEWPORT}
     >
       <motion.header
         className="contact-heading"
@@ -84,10 +84,6 @@ export function ContactSection() {
           <h2 id="contact-title" className="contact-title">
             {t("contact.title")}
           </h2>
-          <p className="contact-availability">
-            <span aria-hidden="true" />
-            {t("contact.availability")}
-          </p>
         </div>
       </motion.header>
 

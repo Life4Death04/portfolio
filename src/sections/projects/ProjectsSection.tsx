@@ -1,6 +1,7 @@
 import { motion, useReducedMotion } from "motion/react";
 import type { Variants } from "motion/react";
 import { useTranslation } from "react-i18next";
+import { SCROLL_REVEAL_VIEWPORT } from "../../lib/motion";
 import { ProjectVisual } from "./ProjectVisual";
 import { PROJECTS, type ProjectAction, type ProjectRecord } from "./projects";
 
@@ -41,7 +42,7 @@ export function ProjectsSection() {
       aria-labelledby="projects-title"
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, amount: 0.12 }}
+      viewport={SCROLL_REVEAL_VIEWPORT}
     >
       <motion.header
         className="projects-intro"

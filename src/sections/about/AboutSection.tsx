@@ -2,6 +2,7 @@ import { motion, useReducedMotion } from "motion/react";
 import type { Variants } from "motion/react";
 import { useTranslation } from "react-i18next";
 import { SITE_CONFIG } from "../../config/site";
+import { SCROLL_REVEAL_VIEWPORT } from "../../lib/motion";
 
 const ABOUT_EASING = [0.2, 0.7, 0.2, 1] as const;
 const FACTS = ["education", "experience", "focus"] as const;
@@ -80,7 +81,7 @@ export function AboutSection() {
       aria-labelledby="about-title"
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, amount: 0.12 }}
+      viewport={SCROLL_REVEAL_VIEWPORT}
     >
       <motion.header
         className="about-heading"
