@@ -25,8 +25,11 @@ describe("ContactSection", () => {
     ).not.toBeInTheDocument();
     expect(section.querySelector("img")).not.toBeInTheDocument();
     expect(
-      within(section).getByText(/full-stack developer based in Madrid/),
+      within(section).getByText(/Great products come from collaboration/),
     ).toBeInTheDocument();
+    expect(
+      within(section).queryByText(/If you’re hiring a frontend developer/),
+    ).not.toBeInTheDocument();
     expect(
       within(section).getAllByRole("link", {
         name: /Email|hello@santiago.dev/,
@@ -79,7 +82,9 @@ describe("ContactSection", () => {
       within(section).getByRole("heading", { name: "Envíame un mensaje" }),
     ).toBeInTheDocument();
     expect(
-      within(section).getByText(/Actualmente estoy terminando la carrera/),
+      within(section).getByText(
+        /Los grandes productos surgen de la colaboración/,
+      ),
     ).toBeInTheDocument();
     expect(
       within(section).getByLabelText("Correo electrónico"),

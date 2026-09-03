@@ -23,14 +23,14 @@ export const es = {
     name: "Santiago Rodríguez",
     role: "Desarrollador frontend",
     description:
-      "Creo interfaces de producto para equipos que cuidan hasta el último detalle. React y TypeScript, con un interés constante por el rendimiento, el movimiento y la accesibilidad.",
+      "Convierto requisitos de producto en interfaces claras y adaptables. Tengo experiencia en aplicaciones conectadas a APIs, flujos protegidos y procesos basados en roles. Me enfoco en una arquitectura frontend mantenible, las pruebas y experiencias de usuario cuidadas.",
     cta: "Iniciar un proyecto",
     portraitDescription: "Santiago Rodríguez con traje negro y corbata",
     metrics: {
-      years: { value: "6", label: "Años creando" },
+      years: { value: "4+", label: "Años de desarrollo" },
       interfaces: { value: "30+", label: "Interfaces creadas" },
-      lighthouse: { value: "98", label: "Prom. Lighthouse" },
-      location: { value: "Madrid", label: "Remoto mundial" },
+      lighthouse: { value: "100+", label: "APIs integradas" },
+      location: { value: "Elche, España", label: "Remoto mundial" },
     },
     actions: {
       email: "Correo electrónico",
@@ -45,7 +45,7 @@ export const es = {
     titleLead: "Habilidades",
     titleAccent: "técnicas",
     description:
-      "Mi experiencia abarca las herramientas más demandadas del ecosistema web. Estoy preparado para trabajar en entornos de desarrollo frontend y backend, con un enfoque en la calidad y el rendimiento.",
+      "Mi enfoque es el desarrollo frontend con React y TypeScript, respaldado por conocimientos prácticos de tecnologías backend y de datos. Comprender cómo interactúa cada capa me ayuda a crear mejores integraciones y a tomar decisiones frontend más sólidas.",
     toolsLabel: "Herramientas y tecnologías",
     groups: {
       frontend: {
@@ -69,7 +69,7 @@ export const es = {
     titleLead: "Mis",
     titleAccent: "proyectos",
     descriptionLead:
-      "Una selección de mis trabajos más relevantes, donde aplico mi experiencia en React.js, Node.js y bases de datos para transformar ideas en productos funcionales.",
+      "Creo sistemas frontend en torno a necesidades operativas reales y convierto procesos complejos en experiencias claras y adaptadas a cada rol. Estos proyectos combinan interfaces reutilizables, integración fiable de APIs y validación rigurosa con conocimientos prácticos full-stack.",
     descriptionDetail:
       " Cada proyecto demuestra mis habilidades para crear experiencias de usuario sólidas y código optimizado.",
     mediaPlaceholder: "Imagen del proyecto",
@@ -83,19 +83,19 @@ export const es = {
     },
     items: {
       ecommerce: {
-        title: "Plataforma de comercio electrónico con Stripe",
+        title: "Autoparts Rausseo",
         description:
-          "Sistema de gestión de inventario en tiempo real creado con TypeScript y Prisma ORM.",
+          "Procesos complejos de inventario y catálogo de productos transformados en experiencias digitales claramente definidas para clientes, operadores y administradores.",
       },
       blog: {
-        title: "Blog de contenido dinámico",
+        title: "Artisanal Food Marketplace",
         description:
-          "Blog de contenido dinámico implementado con React y Express.",
+          "Un mercado digital que conecta el descubrimiento de productos y el pago con el inventario, la gestión de pedidos y la administración de cuentas para tres roles de usuario (Cliente, Vendedor, Administrador).",
       },
       tasks: {
-        title: "Aplicación de gestión de tareas",
+        title: "Pharmacy Inventory Management",
         description:
-          "Aplicación colaborativa de gestión de tareas con actualizaciones en tiempo real.",
+          "Una aplicación basada en roles que centraliza productos, categorías, proveedores y usuarios en un único proceso estructurado de inventario.",
       },
     },
   },
@@ -105,21 +105,21 @@ export const es = {
     titleLead: "Acerca de",
     titleAccent: "mí",
     description:
-      "Soy un desarrollador full-stack apasionado con experiencia en tecnologías web modernas. Me encanta crear aplicaciones eficientes, escalables y fáciles de usar.",
+      "Soy un venezolano de 22 años a quien le encanta construir cosas desde la infancia. Ya sea para atender una necesidad cotidiana o un proceso empresarial complejo, disfruto convertir ideas en soluciones claras, útiles y tangibles, y crear interfaces útiles, cuidadas y fiables.",
     portraitDescription:
       "Retrato de Santiago Rodríguez con traje negro y corbata",
     facts: {
       education: {
         label: "Educación",
-        value: "Estudiante de Ingeniería de Sistemas",
+        value: "Título en Ingeniería de Sistemas de TI",
       },
       experience: {
         label: "Experiencia",
-        value: "Más de 2 años de desarrollo",
+        value: "4+ años de desarrollo",
       },
       focus: {
         label: "Enfoque",
-        value: "Full-stack · React · Node.js",
+        value: "React · TypeScript · Conocimientos full-stack",
       },
     },
     actions: {
@@ -138,7 +138,7 @@ export const es = {
     about: {
       title: "Un poco sobre mí",
       biography:
-        "Soy desarrollador full-stack y vivo en Madrid. Trabajo principalmente con React, Node.js y TypeScript. Actualmente estoy terminando la carrera de Ingeniería de Sistemas y busco mi primer puesto a tiempo completo en un equipo de producto.",
+        "Los grandes productos surgen de la colaboración entre el diseño, la ingeniería y las personas a las que sirven. Me gustaría unirme a un equipo en el que pueda transformar ideas bien concebidas en interfaces fiables, contribuir a las decisiones técnicas y ayudar a crear experiencias útiles.",
     },
     elsewhere: "Otros sitios",
     form: {

@@ -12,11 +12,15 @@ describe("App", () => {
     expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent(
       "Santiago RodríguezFrontend developer",
     );
-    expect(screen.getByText(/React and TypeScript/)).toBeInTheDocument();
-    expect(screen.getByText("Years shipping")).toBeInTheDocument();
+    expect(screen.getByText(/protected flows/)).toBeInTheDocument();
+    expect(screen.getByText("Years developing")).toBeInTheDocument();
+    expect(screen.getByText("4+")).toBeInTheDocument();
     expect(screen.getByText("Interfaces built")).toBeInTheDocument();
-    expect(screen.getByText("Avg. Lighthouse")).toBeInTheDocument();
+    expect(screen.getByText("30+")).toBeInTheDocument();
+    expect(screen.getByText("APIs integrated")).toBeInTheDocument();
+    expect(screen.getByText("100+")).toBeInTheDocument();
     expect(screen.getByText("Remote worldwide")).toBeInTheDocument();
+    expect(screen.getByText("Elche, Spain")).toBeInTheDocument();
 
     const portrait = screen.getByRole("img", {
       name: "Santiago Rodríguez wearing a black suit and tie",
@@ -53,6 +57,8 @@ describe("App", () => {
 
     expect(screen.getByText("Desarrollador frontend")).toBeInTheDocument();
     expect(screen.getByText("Interfaces creadas")).toBeInTheDocument();
+    expect(screen.getByText("APIs integradas")).toBeInTheDocument();
+    expect(screen.getByText("Elche, España")).toBeInTheDocument();
     expect(
       screen.getByRole("heading", { name: "Habilidades técnicas" }),
     ).toBeInTheDocument();

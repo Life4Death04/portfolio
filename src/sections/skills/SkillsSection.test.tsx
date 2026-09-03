@@ -13,25 +13,57 @@ describe("SkillsSection", () => {
       {
         title: "Frontend Technologies",
         technologies: [
-          "HTML",
-          "CSS",
+          "HTML5",
+          "CSS3",
           "JavaScript",
           "TypeScript",
           "React.js",
           "React Router",
-          "Redux",
+          "TanStack Query",
+          "Redux Toolkit",
+          "Zustand",
+          "Next.js",
           "React Hook Form",
+          "Zod",
+          "Vite",
+          "TanStack Start",
           "Tailwind CSS",
           "MUI Components",
+          "Framer Motion",
+          "React Testing Library",
+          "Axios",
+          "Auth0",
+          "Better Auth",
         ],
       },
       {
         title: "Backend Technologies",
-        technologies: ["Node.js", "Express.js", "Prisma ORM", "MySQL"],
+        technologies: [
+          "Node.js",
+          "Express.js",
+          "Prisma ORM",
+          "MySQL",
+          "PostgreSQL",
+          "REST APIs",
+          "GraphQL",
+          "JWT Authentication",
+          "Vitest",
+        ],
       },
       {
         title: "Tools & Software",
-        technologies: ["VSCode", "Git", "GitHub", "Insomnia"],
+        technologies: [
+          "VSCode",
+          "Git",
+          "GitHub",
+          "Insomnia",
+          "Postman",
+          "Notion",
+          "Docker",
+          "AWS S3",
+          "AWS EC2",
+          "AWS SES",
+        ],
       },
     ];
 
@@ -85,5 +117,7 @@ describe("SkillsSection", () => {
       screen.getByText("Explorando nuevas tecnologías…"),
     ).toBeInTheDocument();
     expect(screen.getByText("React Hook Form")).toBeInTheDocument();
+    expect(screen.getByText("TanStack Query")).toBeInTheDocument();
+    expect(screen.getByText("Better Auth")).toBeInTheDocument();
   });
 });

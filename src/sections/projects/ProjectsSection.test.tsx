@@ -6,17 +6,17 @@ import { ProjectsSection } from "./ProjectsSection";
 
 const EXPECTED_PROJECTS = [
   {
-    title: "E-commerce Platform with Stripe",
+    title: "Autoparts Rausseo",
     technologies: ["React.js", "Node.js", "TypeScript", "+3 more"],
     actions: ["View code", "View project"],
   },
   {
-    title: "Dynamic Content Blog",
+    title: "Artisanal Food Marketplace",
     technologies: ["React.js", "Express.js", "Node.js", "+2 more"],
     actions: ["View code", "View project"],
   },
   {
-    title: "Task Management App",
+    title: "Pharmacy Inventory Management",
     technologies: ["React.js", "Node.js", "Socket.io", "+2 more"],
     actions: ["View code", "View project"],
   },
@@ -107,12 +107,12 @@ describe("ProjectsSection", () => {
 
     expect(
       within(section).getByRole("heading", {
-        name: "Plataforma de comercio electrónico con Stripe",
+        name: "Autoparts Rausseo",
       }),
     ).toBeInTheDocument();
     expect(
       within(section).getByRole("img", {
-        name: "Lámina decorativa del proyecto Plataforma de comercio electrónico con Stripe",
+        name: "Lámina decorativa del proyecto Autoparts Rausseo",
       }),
     ).toBeInTheDocument();
     expect(within(section).getAllByText("React.js")).toHaveLength(3);

@@ -5,9 +5,9 @@ import { i18n } from "../../i18n";
 import { AboutSection } from "./AboutSection";
 
 const ENGLISH_FACTS = [
-  ["Education", "Systems Engineering Student"],
-  ["Experience", "2+ Years Development"],
-  ["Focus", "Full-stack · React · Node.js"],
+  ["Education", "IT Systems Engineering Degree"],
+  ["Experience", "4+ Years Development"],
+  ["Focus", "React · TypeScript · Full-stack awareness"],
 ] as const;
 
 describe("AboutSection", () => {
@@ -21,7 +21,7 @@ describe("AboutSection", () => {
     ).toBeInTheDocument();
     expect(
       within(section).getByText(
-        "I'm a passionate full-stack developer with experience in modern web technologies. I love creating efficient, scalable, and user-friendly applications.",
+        "I’m a 22-year-old Venezuelan who has loved building things since childhood. Whether addressing an everyday need or a complex business process, I enjoy turning ideas into clear, useful, and tangible solutions and creating interfaces that are useful, thoughtful, and reliable.",
       ),
     ).toBeInTheDocument();
     const portrait = within(section).getByRole("img", {
@@ -84,20 +84,22 @@ describe("AboutSection", () => {
     ).toBe(false);
   });
 
-  it("renders professional neutral Spanish while preserving React and Node.js", async () => {
+  it("renders professional neutral Spanish while preserving technology names", async () => {
     await i18n.changeLanguage("es");
     render(<AboutSection />);
 
     const section = screen.getByRole("region", { name: "Acerca de mí" });
 
     expect(
-      within(section).getByText("Estudiante de Ingeniería de Sistemas"),
+      within(section).getByText("Título en Ingeniería de Sistemas de TI"),
     ).toBeInTheDocument();
     expect(
-      within(section).getByText("Más de 2 años de desarrollo"),
+      within(section).getByText("4+ años de desarrollo"),
     ).toBeInTheDocument();
     expect(
-      within(section).getByText("Full-stack · React · Node.js"),
+      within(section).getByText(
+        "React · TypeScript · Conocimientos full-stack",
+      ),
     ).toBeInTheDocument();
     expect(
       within(section).getByRole("button", { name: "Descargar CV" }),
