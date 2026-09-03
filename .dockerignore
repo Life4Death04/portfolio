@@ -1,0 +1,12 @@
+.atl
+.git
+.gitignore
+.env
+.env.*
+!.env.example
+dist
+node_modules
+*.log
+Dockerfile*
+compose*.yaml
+compose*.yml
