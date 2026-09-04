@@ -23,14 +23,14 @@ export const en = {
     name: "Santiago Rodríguez",
     role: "Frontend developer",
     description:
-      "I build product interfaces for teams that care about the last five percent. React and TypeScript, with a stubborn interest in performance, motion and accessibility.",
-    cta: "Start a project",
+      "I turn product requirements into clear, responsive interfaces. Experienced in API-connected applications, protected flows and role-based workflows. Focused on maintainable frontend architecture, testing, and polished user experiences.",
+    cta: "Download resume",
     portraitDescription: "Santiago Rodríguez wearing a black suit and tie",
     metrics: {
-      years: { value: "6", label: "Years shipping" },
-      interfaces: { value: "30+", label: "Interfaces built" },
-      lighthouse: { value: "98", label: "Avg. Lighthouse" },
-      location: { value: "Madrid", label: "Remote worldwide" },
+      clients: { value: "+2", label: "Client engagements" },
+      screens: { value: "+22", label: "API-connected screens" },
+      tests: { value: "+5", label: "End-to-end tests" },
+      location: { value: "Elche, Spain", label: "Remote worldwide" },
     },
     actions: {
       email: "Email",
@@ -45,7 +45,7 @@ export const en = {
     titleLead: "Technical",
     titleAccent: "Skills",
     description:
-      "My experience spans the most in-demand tools in the web ecosystem. I'm prepared to work in Frontend and Backend development environments, with a focus on quality and performance.",
+      "My focus is frontend development with React and TypeScript, supported by working knowledge of backend and data technologies. Understanding how every layer interacts helps me build better integrations and make stronger frontend decisions.",
     toolsLabel: "Tools and technologies",
     groups: {
       frontend: {
@@ -69,7 +69,7 @@ export const en = {
     titleLead: "My",
     titleAccent: "Projects",
     descriptionLead:
-      "A selection of my most relevant work, where I apply my expertise in React.js, Node.js and databases to transform ideas into functional products.",
+      "I build frontend systems around real operational needs, turning complex workflows into clear, role-aware experiences. These projects combine reusable interfaces, reliable API integration, and disciplined validation with practical full-stack awareness.",
     descriptionDetail:
       " Each project is a demonstration of my skills in creating solid user experiences and optimized code.",
     mediaPlaceholder: "Project shot",
@@ -82,19 +82,20 @@ export const en = {
       projectShort: "Project",
     },
     items: {
+      productCatalog: {
+        title: "Autoparts Rausseo",
+        description:
+          "Complex inventory and product-catalog workflows transformed into clearly defined digital experiences for customers, operators, and administrators.",
+      },
       ecommerce: {
-        title: "E-commerce Platform with Stripe",
+        title: "Artisanal Food Marketplace",
         description:
-          "Real-time inventory management system built with TypeScript and Prisma ORM.",
+          "A digital marketplace connecting product discovery and checkout with inventory, fulfillment, and account management across three user roles (Customer, Seller, Admin).",
       },
-      blog: {
-        title: "Dynamic Content Blog",
-        description: "Dynamic content blog implemented with React and Express.",
-      },
-      tasks: {
-        title: "Task Management App",
+      inventoryManagement: {
+        title: "Pharmacy Inventory Management",
         description:
-          "Collaborative task management application with real-time updates.",
+          "A role-based application that centralizes products, categories, suppliers, and users into one structured inventory workflow.",
       },
     },
   },
@@ -104,21 +105,21 @@ export const en = {
     titleLead: "About",
     titleAccent: "Me",
     description:
-      "I'm a passionate full-stack developer with experience in modern web technologies. I love creating efficient, scalable, and user-friendly applications.",
+      "I’m a 22-year-old Venezuelan who has loved building things since childhood. Whether addressing an everyday need or a complex business process, I enjoy turning ideas into clear, useful, and tangible solutions and creating interfaces that are useful, thoughtful, and reliable.",
     portraitDescription:
       "Portrait of Santiago Rodríguez wearing a black suit and tie",
     facts: {
       education: {
         label: "Education",
-        value: "Systems Engineering Student",
+        value: "IT Systems Engineer · Degree issuance pending",
       },
       experience: {
-        label: "Experience",
-        value: "2+ Years Development",
+        label: "Current role",
+        value: "Independent Frontend Developer",
       },
       focus: {
         label: "Focus",
-        value: "Full-stack · React · Node.js",
+        value: "React · TypeScript · Full-stack awareness",
       },
     },
     actions: {
@@ -137,7 +138,7 @@ export const en = {
     about: {
       title: "A bit about me",
       biography:
-        "I'm a full-stack developer based in Madrid, working mostly with React, Node.js and TypeScript. Right now I'm finishing my Systems Engineering degree and looking for my first full-time role on a product team.",
+        "Great products come from collaboration between design, engineering, and the people they serve. I’d love to join a team where I can transform thoughtful ideas into dependable interfaces, contribute to technical decisions, and help deliver useful experiences.",
     },
     elsewhere: "Elsewhere",
     form: {
@@ -152,9 +153,9 @@ export const en = {
       message: "Message",
       messagePlaceholder: "A few lines about the role and the team.",
       submit: "Send message",
-      unavailable: "Contact form unavailable.",
-      emailInstead: "Email me directly at",
-      trust: "Nothing entered here is stored or sent.",
+      subject: "Portfolio inquiry",
+      mailClient: "Submitting opens your email app to write to",
+      trust: "This site does not store the information you enter.",
     },
     actions: {
       github: "GitHub",
@@ -162,8 +163,9 @@ export const en = {
       downloadCv: "Download CV",
       email: "Email",
       emailAvailable: "Write directly",
-      pending: "Not yet available",
-      unavailable: "{{name}} unavailable",
+      profileAvailable: "View profile",
+      resumeAvailable: "Download PDF",
+      external: "{{name}} (opens in a new tab)",
     },
     availability: "Open to offers · Remote or Madrid",
   },

@@ -40,7 +40,7 @@ export function ProjectVisual({ kind }: ProjectVisualProps) {
     );
   }
 
-  if (kind === "blog") {
+  if (kind === "productCatalog") {
     return (
       <svg
         className="project-plate project-plate-blog"

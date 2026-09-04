@@ -14,8 +14,9 @@ export const SITE_CONFIG = {
     projects: "#projects",
     about: "#about",
     contact: "#contact",
-    email: "mailto:hello@santiago.dev",
-    github: "https://github.com/replace-with-santiago",
-    linkedin: "https://www.linkedin.com/in/replace-with-santiago",
+    resume: "/santiago-rodriguez-resume.pdf",
+    email: "mailto:santiagodrm@gmail.com",
+    github: "https://github.com/Life4Death04",
+    linkedin: "https://www.linkedin.com/in/santiagodrm-rodriguez/",
   },
 } as const;
