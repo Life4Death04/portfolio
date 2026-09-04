@@ -127,6 +127,8 @@ export function ProjectsSection() {
                           href={url}
                           key={action}
                           aria-label={label}
+                          target="_blank"
+                          rel="noopener noreferrer"
                         >
                           {content}
                         </a>

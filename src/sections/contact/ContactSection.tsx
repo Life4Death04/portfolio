@@ -1,13 +1,34 @@
 import { motion, useReducedMotion } from "motion/react";
+import type { FormEvent } from "react";
 import { useTranslation } from "react-i18next";
 import { SITE_CONFIG } from "../../config/site";
 import { createRevealVariants, SCROLL_REVEAL_VIEWPORT } from "../../lib/motion";
 
 const CONTACT_ACTIONS = [
-  { key: "github", direction: "external", available: false },
-  { key: "linkedin", direction: "external", available: false },
-  { key: "downloadCv", direction: "download", available: false },
-  { key: "email", direction: "external", available: true },
+  {
+    key: "github",
+    direction: "external",
+    href: SITE_CONFIG.links.github,
+    external: true,
+  },
+  {
+    key: "linkedin",
+    direction: "external",
+    href: SITE_CONFIG.links.linkedin,
+    external: true,
+  },
+  {
+    key: "downloadCv",
+    direction: "download",
+    href: SITE_CONFIG.links.resume,
+    external: false,
+  },
+  {
+    key: "email",
+    direction: "external",
+    href: SITE_CONFIG.links.email,
+    external: false,
+  },
 ] as const;
 
 function GitHubIcon() {
@@ -67,6 +88,26 @@ export function ContactSection() {
   const reduceMotion = useReducedMotion() ?? false;
   const emailAddress = SITE_CONFIG.links.email.replace("mailto:", "");
 
+  function handleSubmit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+
+    const formData = new FormData(event.currentTarget);
+    const body = [
+      `${t("contact.form.name")}: ${formData.get("name")}`,
+      `${t("contact.form.email")}: ${formData.get("email")}`,
+      `${t("contact.form.company")}: ${formData.get("company") || "—"}`,
+      "",
+      `${t("contact.form.message")}:`,
+      String(formData.get("message")),
+    ].join("\n");
+    const parameters = new URLSearchParams({
+      subject: t("contact.form.subject"),
+      body,
+    });
+
+    window.open(`${SITE_CONFIG.links.email}?${parameters}`, "_self");
+  }
+
   return (
     <motion.section
       id="contact"
@@ -90,6 +131,8 @@ export function ContactSection() {
       <div className="contact-body">
         <motion.form
           className="contact-form"
+          action={SITE_CONFIG.links.email}
+          onSubmit={handleSubmit}
           aria-labelledby="contact-form-title"
           aria-describedby="contact-form-status contact-form-trust"
           variants={createRevealVariants(reduceMotion, 0.44)}
@@ -98,7 +141,7 @@ export function ContactSection() {
             <h3 id="contact-form-title">{t("contact.form.title")}</h3>
             <p>{t("contact.form.replyTime")}</p>
           </div>
-          <fieldset disabled>
+          <fieldset>
             <div className="contact-field-grid">
               <label>
                 <span>{t("contact.form.name")}</span>
@@ -106,6 +149,7 @@ export function ContactSection() {
                   type="text"
                   name="name"
                   autoComplete="name"
+                  required
                   placeholder={t("contact.form.namePlaceholder")}
                 />
               </label>
@@ -115,6 +159,7 @@ export function ContactSection() {
                   type="email"
                   name="email"
                   autoComplete="email"
+                  required
                   placeholder={t("contact.form.emailPlaceholder")}
                 />
               </label>
@@ -132,6 +177,7 @@ export function ContactSection() {
                 <textarea
                   name="message"
                   rows={5}
+                  required
                   placeholder={t("contact.form.messagePlaceholder")}
                 />
               </label>
@@ -142,7 +188,7 @@ export function ContactSection() {
             </button>
           </fieldset>
           <p id="contact-form-status" className="contact-form-status">
-            {t("contact.form.unavailable")} {t("contact.form.emailInstead")}{" "}
+            {t("contact.form.mailClient")}{" "}
             <a href={SITE_CONFIG.links.email}>{emailAddress}</a>
           </p>
           <p id="contact-form-trust" className="contact-form-trust">
@@ -167,9 +213,11 @@ export function ContactSection() {
                         <strong>{label}</strong>
                         <small>
                           {t(
-                            action.available
+                            action.key === "email"
                               ? "contact.actions.emailAvailable"
-                              : "contact.actions.pending",
+                              : action.direction === "download"
+                                ? "contact.actions.resumeAvailable"
+                                : "contact.actions.profileAvailable",
                           )}
                         </small>
                       </span>
@@ -183,26 +231,26 @@ export function ContactSection() {
                   </>
                 );
 
-                return action.available ? (
+                return (
                   <a
                     className="contact-action"
-                    href={SITE_CONFIG.links.email}
+                    href={action.href}
                     key={action.key}
+                    aria-label={
+                      action.external
+                        ? t("contact.actions.external", { name: label })
+                        : action.direction === "download"
+                          ? label
+                          : undefined
+                    }
+                    download={
+                      action.direction === "download" ? true : undefined
+                    }
+                    target={action.external ? "_blank" : undefined}
+                    rel={action.external ? "noopener noreferrer" : undefined}
                   >
                     {content}
                   </a>
-                ) : (
-                  <button
-                    className="contact-action"
-                    type="button"
-                    disabled
-                    key={action.key}
-                    aria-label={t("contact.actions.unavailable", {
-                      name: label,
-                    })}
-                  >
-                    {content}
-                  </button>
                 );
               })}
             </div>

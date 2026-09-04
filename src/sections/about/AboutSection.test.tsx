@@ -5,8 +5,8 @@ import { i18n } from "../../i18n";
 import { AboutSection } from "./AboutSection";
 
 const ENGLISH_FACTS = [
-  ["Education", "IT Systems Engineering Degree"],
-  ["Experience", "4+ Years Development"],
+  ["Education", "IT Systems Engineer · Degree issuance pending"],
+  ["Current role", "Independent Frontend Developer"],
   ["Focus", "React · TypeScript · Full-stack awareness"],
 ] as const;
 
@@ -54,12 +54,12 @@ describe("AboutSection", () => {
     ).toEqual(ENGLISH_FACTS.map(([, value]) => value));
   });
 
-  it("uses configured destinations, accessible external links, and an honest disabled CV", () => {
+  it("uses configured destinations, a CV download, and accessible external links", () => {
     render(<AboutSection />);
 
     const section = screen.getByRole("region", { name: "About Me" });
     const contact = within(section).getByRole("link", { name: "Get in touch" });
-    const cv = within(section).getByRole("button", { name: "Download CV" });
+    const cv = within(section).getByRole("link", { name: "Download CV" });
     const github = within(section).getByRole("link", {
       name: "GitHub (opens in a new tab)",
     });
@@ -68,13 +68,14 @@ describe("AboutSection", () => {
     });
 
     expect(contact).toHaveAttribute("href", SITE_CONFIG.links.email);
-    expect(cv).toBeDisabled();
+    expect(cv).toHaveAttribute("href", SITE_CONFIG.links.resume);
+    expect(cv).toHaveAttribute("download");
     expect(github).toHaveAttribute("href", SITE_CONFIG.links.github);
     expect(linkedin).toHaveAttribute("href", SITE_CONFIG.links.linkedin);
 
     for (const social of [github, linkedin]) {
       expect(social).toHaveAttribute("target", "_blank");
-      expect(social).toHaveAttribute("rel", "noreferrer");
+      expect(social).toHaveAttribute("rel", "noopener noreferrer");
     }
 
     expect(
@@ -91,10 +92,12 @@ describe("AboutSection", () => {
     const section = screen.getByRole("region", { name: "Acerca de mí" });
 
     expect(
-      within(section).getByText("Título en Ingeniería de Sistemas de TI"),
+      within(section).getByText(
+        "Ingeniero de Sistemas de TI · Emisión del título pendiente",
+      ),
     ).toBeInTheDocument();
     expect(
-      within(section).getByText("4+ años de desarrollo"),
+      within(section).getByText("Desarrollador frontend independiente"),
     ).toBeInTheDocument();
     expect(
       within(section).getByText(
@@ -102,8 +105,11 @@ describe("AboutSection", () => {
       ),
     ).toBeInTheDocument();
     expect(
-      within(section).getByRole("button", { name: "Descargar CV" }),
-    ).toBeDisabled();
+      within(section).getByRole("link", { name: "Descargar CV" }),
+    ).toHaveAttribute("href", SITE_CONFIG.links.resume);
+    expect(
+      within(section).getByRole("link", { name: "Descargar CV" }),
+    ).toHaveAttribute("download");
     expect(
       within(section).getByRole("img", {
         name: "Retrato de Santiago Rodríguez con traje negro y corbata",

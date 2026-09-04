@@ -1,7 +1,7 @@
 export type ProjectAction = "code" | "project";
 
 export type ProjectRecord = {
-  key: "ecommerce" | "blog" | "tasks";
+  key: "productCatalog" | "ecommerce" | "inventoryManagement";
   technologies: readonly string[];
   additionalTechnologies: number;
   actions: readonly ProjectAction[];
@@ -11,21 +11,24 @@ export type ProjectRecord = {
 
 export const PROJECTS: readonly ProjectRecord[] = [
   {
-    key: "ecommerce",
+    key: "productCatalog",
     technologies: ["React.js", "Node.js", "TypeScript"],
     additionalTechnologies: 3,
     actions: ["code", "project"],
+    codeUrl: "https://github.com/Life4Death04/autoparts-rausseo",
   },
   {
-    key: "blog",
+    key: "ecommerce",
     technologies: ["React.js", "Express.js", "Node.js"],
     additionalTechnologies: 2,
     actions: ["code", "project"],
+    codeUrl: "https://github.com/Life4Death04/mercado-artesanal-tesis",
   },
   {
-    key: "tasks",
+    key: "inventoryManagement",
     technologies: ["React.js", "Node.js", "Socket.io"],
     additionalTechnologies: 2,
     actions: ["code", "project"],
+    codeUrl: "https://github.com/Life4Death04/sistema-inventario-frontend",
   },
 ] as const;

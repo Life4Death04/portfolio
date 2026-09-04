@@ -24,12 +24,12 @@ export const es = {
     role: "Desarrollador frontend",
     description:
       "Convierto requisitos de producto en interfaces claras y adaptables. Tengo experiencia en aplicaciones conectadas a APIs, flujos protegidos y procesos basados en roles. Me enfoco en una arquitectura frontend mantenible, las pruebas y experiencias de usuario cuidadas.",
-    cta: "Iniciar un proyecto",
+    cta: "Descargar CV",
     portraitDescription: "Santiago Rodríguez con traje negro y corbata",
     metrics: {
-      years: { value: "4+", label: "Años de desarrollo" },
-      interfaces: { value: "30+", label: "Interfaces creadas" },
-      lighthouse: { value: "100+", label: "APIs integradas" },
+      clients: { value: "+2", label: "Proyectos con clientes" },
+      screens: { value: "+22", label: "Pantallas conectadas a APIs" },
+      tests: { value: "+5", label: "Pruebas end-to-end" },
       location: { value: "Elche, España", label: "Remoto mundial" },
     },
     actions: {
@@ -82,18 +82,18 @@ export const es = {
       projectShort: "Proyecto",
     },
     items: {
-      ecommerce: {
-        title: "Autoparts Rausseo",
+      productCatalog: {
+        title: "Autopartes Rausseo",
         description:
           "Procesos complejos de inventario y catálogo de productos transformados en experiencias digitales claramente definidas para clientes, operadores y administradores.",
       },
-      blog: {
-        title: "Artisanal Food Marketplace",
+      ecommerce: {
+        title: "Mercado de Productos Artesanales",
         description:
           "Un mercado digital que conecta el descubrimiento de productos y el pago con el inventario, la gestión de pedidos y la administración de cuentas para tres roles de usuario (Cliente, Vendedor, Administrador).",
       },
-      tasks: {
-        title: "Pharmacy Inventory Management",
+      inventoryManagement: {
+        title: "Gestión de Inventario Farmacéutico",
         description:
           "Una aplicación basada en roles que centraliza productos, categorías, proveedores y usuarios en un único proceso estructurado de inventario.",
       },
@@ -111,11 +111,11 @@ export const es = {
     facts: {
       education: {
         label: "Educación",
-        value: "Título en Ingeniería de Sistemas de TI",
+        value: "Ingeniero de Sistemas de TI · Emisión del título pendiente",
       },
       experience: {
-        label: "Experiencia",
-        value: "4+ años de desarrollo",
+        label: "Rol actual",
+        value: "Desarrollador frontend independiente",
       },
       focus: {
         label: "Enfoque",
@@ -153,9 +153,10 @@ export const es = {
       message: "Mensaje",
       messagePlaceholder: "Cuéntame brevemente sobre el puesto y el equipo.",
       submit: "Enviar mensaje",
-      unavailable: "El formulario de contacto no está disponible.",
-      emailInstead: "Escríbeme directamente a",
-      trust: "Nada de lo que escribas aquí se almacena ni se envía.",
+      subject: "Consulta desde el portafolio",
+      mailClient:
+        "Al enviarlo, se abrirá tu aplicación de correo para escribir a",
+      trust: "Este sitio no almacena los datos introducidos.",
     },
     actions: {
       github: "GitHub",
@@ -163,8 +164,9 @@ export const es = {
       downloadCv: "Descargar CV",
       email: "Correo electrónico",
       emailAvailable: "Escribir directamente",
-      pending: "Aún no disponible",
-      unavailable: "{{name}} no disponible",
+      profileAvailable: "Ver perfil",
+      resumeAvailable: "Descargar PDF",
+      external: "{{name}} (se abre en una pestaña nueva)",
     },
     availability: "Disponible para ofertas · Remoto o Madrid",
   },

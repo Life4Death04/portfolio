@@ -1,9 +1,65 @@
-import { motion, useReducedMotion } from "motion/react";
+import { useEffect } from "react";
+import type { CSSProperties } from "react";
+import {
+  animate,
+  motion,
+  useMotionValue,
+  useReducedMotion,
+  useTransform,
+} from "motion/react";
 import { useTranslation } from "react-i18next";
 import { SITE_CONFIG } from "../../config/site";
 import { createRevealVariants, createStaggerVariants } from "../../lib/motion";
 
-const metrics = ["years", "interfaces", "lighthouse", "location"] as const;
+const metrics = ["clients", "screens", "tests", "location"] as const;
+
+function AnimatedMetricValue({
+  value,
+  reduceMotion,
+  delay,
+}: {
+  value: string;
+  reduceMotion: boolean;
+  delay: number;
+}) {
+  const match = value.match(/^(\D*)(\d+)(.*)$/);
+  const isNumeric = match !== null;
+  const prefix = match?.[1] ?? "";
+  const target = Number(match?.[2] ?? 0);
+  const suffix = match?.[3] ?? "";
+  const count = useMotionValue(reduceMotion ? target : 0);
+  const displayedCount = useTransform(
+    count,
+    (current) => `${prefix}${Math.round(current)}${suffix}`,
+  );
+
+  useEffect(() => {
+    count.set(reduceMotion ? target : 0);
+
+    if (reduceMotion || !isNumeric) {
+      return;
+    }
+
+    const controls = animate(count, target, {
+      delay,
+      duration: 1.5,
+      ease: [0.2, 0.7, 0.2, 1],
+    });
+
+    return () => controls.stop();
+  }, [count, delay, isNumeric, reduceMotion, target]);
+
+  if (!isNumeric) {
+    return <span className="metric-copy">{value}</span>;
+  }
+
+  return (
+    <>
+      <motion.span aria-hidden="true">{displayedCount}</motion.span>
+      <span className="visually-hidden">{value}</span>
+    </>
+  );
+}
 
 function EmailIcon() {
   return (
@@ -95,16 +151,33 @@ export function HomeSection() {
       </motion.figure>
 
       <motion.dl className="metrics" variants={itemVariants}>
-        {metrics.map((metric) => (
-          <div key={metric}>
-            <dt>{t(`home.metrics.${metric}.label`)}</dt>
-            <dd>{t(`home.metrics.${metric}.value`)}</dd>
-          </div>
-        ))}
+        {metrics.map((metric, index) => {
+          const delay = 0.7 + index * 0.12;
+          const revealStyle = {
+            "--metric-reveal-delay": `${delay}s`,
+          } as CSSProperties;
+
+          return (
+            <div key={metric} style={revealStyle}>
+              <dt>
+                <span className="metric-copy">
+                  {t(`home.metrics.${metric}.label`)}
+                </span>
+              </dt>
+              <dd>
+                <AnimatedMetricValue
+                  value={t(`home.metrics.${metric}.value`)}
+                  reduceMotion={reduceMotion}
+                  delay={delay}
+                />
+              </dd>
+            </div>
+          );
+        })}
       </motion.dl>
 
       <motion.div className="home-actions" variants={itemVariants}>
-        <a className="primary-action" href={SITE_CONFIG.links.email}>
+        <a className="primary-action" href={SITE_CONFIG.links.resume} download>
           {t("home.cta")}
         </a>
         <div className="social-links">
@@ -118,7 +191,7 @@ export function HomeSection() {
                   link.external ? t("home.actions.external", { name }) : name
                 }
                 target={link.external ? "_blank" : undefined}
-                rel={link.external ? "noreferrer" : undefined}
+                rel={link.external ? "noopener noreferrer" : undefined}
               >
                 {link.icon}
               </a>

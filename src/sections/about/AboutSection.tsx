@@ -139,9 +139,9 @@ export function AboutSection() {
         <a className="about-contact" href={SITE_CONFIG.links.email}>
           {t("about.actions.contact")}
         </a>
-        <button className="about-cv" type="button" disabled>
+        <a className="about-cv" href={SITE_CONFIG.links.resume} download>
           {t("about.actions.downloadCv")}
-        </button>
+        </a>
         <div className="about-socials">
           {socialLinks.map((link) => {
             const name = t(`about.actions.${link.key}`);
@@ -152,7 +152,7 @@ export function AboutSection() {
                 key={link.key}
                 aria-label={t("about.actions.external", { name })}
                 target="_blank"
-                rel="noreferrer"
+                rel="noopener noreferrer"
               >
                 {link.icon}
               </a>

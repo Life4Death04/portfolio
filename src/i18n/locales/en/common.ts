@@ -24,12 +24,12 @@ export const en = {
     role: "Frontend developer",
     description:
       "I turn product requirements into clear, responsive interfaces. Experienced in API-connected applications, protected flows and role-based workflows. Focused on maintainable frontend architecture, testing, and polished user experiences.",
-    cta: "Start a project",
+    cta: "Download resume",
     portraitDescription: "Santiago Rodríguez wearing a black suit and tie",
     metrics: {
-      years: { value: "4+", label: "Years developing" },
-      interfaces: { value: "30+", label: "Interfaces built" },
-      lighthouse: { value: "100+", label: "APIs integrated" },
+      clients: { value: "+2", label: "Client engagements" },
+      screens: { value: "+22", label: "API-connected screens" },
+      tests: { value: "+5", label: "End-to-end tests" },
       location: { value: "Elche, Spain", label: "Remote worldwide" },
     },
     actions: {
@@ -82,17 +82,17 @@ export const en = {
       projectShort: "Project",
     },
     items: {
-      ecommerce: {
+      productCatalog: {
         title: "Autoparts Rausseo",
         description:
           "Complex inventory and product-catalog workflows transformed into clearly defined digital experiences for customers, operators, and administrators.",
       },
-      blog: {
+      ecommerce: {
         title: "Artisanal Food Marketplace",
         description:
           "A digital marketplace connecting product discovery and checkout with inventory, fulfillment, and account management across three user roles (Customer, Seller, Admin).",
       },
-      tasks: {
+      inventoryManagement: {
         title: "Pharmacy Inventory Management",
         description:
           "A role-based application that centralizes products, categories, suppliers, and users into one structured inventory workflow.",
@@ -111,11 +111,11 @@ export const en = {
     facts: {
       education: {
         label: "Education",
-        value: "IT Systems Engineering Degree",
+        value: "IT Systems Engineer · Degree issuance pending",
       },
       experience: {
-        label: "Experience",
-        value: "4+ Years Development",
+        label: "Current role",
+        value: "Independent Frontend Developer",
       },
       focus: {
         label: "Focus",
@@ -153,9 +153,9 @@ export const en = {
       message: "Message",
       messagePlaceholder: "A few lines about the role and the team.",
       submit: "Send message",
-      unavailable: "Contact form unavailable.",
-      emailInstead: "Email me directly at",
-      trust: "Nothing entered here is stored or sent.",
+      subject: "Portfolio inquiry",
+      mailClient: "Submitting opens your email app to write to",
+      trust: "This site does not store the information you enter.",
     },
     actions: {
       github: "GitHub",
@@ -163,8 +163,9 @@ export const en = {
       downloadCv: "Download CV",
       email: "Email",
       emailAvailable: "Write directly",
-      pending: "Not yet available",
-      unavailable: "{{name}} unavailable",
+      profileAvailable: "View profile",
+      resumeAvailable: "Download PDF",
+      external: "{{name}} (opens in a new tab)",
     },
     availability: "Open to offers · Remote or Madrid",
   },

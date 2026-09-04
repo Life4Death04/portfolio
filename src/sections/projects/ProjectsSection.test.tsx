@@ -38,7 +38,7 @@ describe("ProjectsSection", () => {
     ).toEqual(EXPECTED_PROJECTS.map((project) => project.title));
   });
 
-  it("preserves technology order and honest disabled action availability", () => {
+  it("preserves technology order and reflects action availability", () => {
     render(<ProjectsSection />);
 
     const section = screen.getByRole("region", { name: "My Projects" });
@@ -55,18 +55,19 @@ describe("ProjectsSection", () => {
           .getAllByRole("listitem")
           .map((item) => item.textContent),
       ).toEqual(expected.technologies);
-      expect(
-        within(project)
-          .getAllByRole("button")
-          .map((button) => button.getAttribute("aria-label")),
-      ).toEqual(expected.actions);
-      within(project)
-        .getAllByRole("button")
-        .forEach((button) => expect(button).toBeDisabled());
+      const code = within(project).getByRole("link", { name: "View code" });
+      const projectAction = within(project).getByRole("button", {
+        name: "View project",
+      });
+
+      expect(code).toHaveAttribute("href", PROJECTS[index].codeUrl);
+      expect(code).toHaveAttribute("target", "_blank");
+      expect(code).toHaveAttribute("rel", "noopener noreferrer");
+      expect(projectAction).toBeDisabled();
     });
   });
 
-  it("uses localized media labels without fake links or unsupported metrics", () => {
+  it("uses localized media labels without unsupported metrics", () => {
     render(<ProjectsSection />);
 
     const section = screen.getByRole("region", { name: "My Projects" });
@@ -78,7 +79,9 @@ describe("ProjectsSection", () => {
         }),
       ).toBeInTheDocument();
     });
-    expect(within(section).queryByRole("link")).not.toBeInTheDocument();
+    expect(
+      within(section).getAllByRole("link", { name: "View code" }),
+    ).toHaveLength(3);
     expect(within(section).queryByRole("progressbar")).not.toBeInTheDocument();
     expect(
       within(section).queryByText(/Lighthouse|%/i),
@@ -93,7 +96,7 @@ describe("ProjectsSection", () => {
 
     expect(
       visuals.map((visual) => visual.getAttribute("data-project-visual")),
-    ).toEqual(["ecommerce", "blog", "tasks"]);
+    ).toEqual(["productCatalog", "ecommerce", "inventoryManagement"]);
     visuals.forEach((visual) =>
       expect(visual).toHaveAttribute("aria-hidden", "true"),
     );
@@ -107,17 +110,22 @@ describe("ProjectsSection", () => {
 
     expect(
       within(section).getByRole("heading", {
-        name: "Autoparts Rausseo",
+        name: "Autopartes Rausseo",
       }),
     ).toBeInTheDocument();
     expect(
       within(section).getByRole("img", {
-        name: "Lámina decorativa del proyecto Autoparts Rausseo",
+        name: "Lámina decorativa del proyecto Autopartes Rausseo",
+      }),
+    ).toBeInTheDocument();
+    expect(
+      within(section).getByRole("heading", {
+        name: "Gestión de Inventario Farmacéutico",
       }),
     ).toBeInTheDocument();
     expect(within(section).getAllByText("React.js")).toHaveLength(3);
     expect(
-      within(section).getAllByRole("button", { name: "Ver código" }),
+      within(section).getAllByRole("link", { name: "Ver código" }),
     ).toHaveLength(3);
     const projectActions = within(section).getAllByRole("button", {
       name: "Ver proyecto",
