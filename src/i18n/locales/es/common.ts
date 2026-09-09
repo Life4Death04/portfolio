@@ -28,9 +28,9 @@ export const es = {
     portraitDescription: "Santiago Rodríguez con traje negro y corbata",
     metrics: {
       clients: { value: "+2", label: "Proyectos con clientes" },
-      screens: { value: "+22", label: "Pantallas conectadas a APIs" },
-      tests: { value: "+5", label: "Pruebas end-to-end" },
-      location: { value: "Elche, España", label: "Remoto mundial" },
+      screens: { value: "+200", label: "Pantallas conectadas a APIs" },
+      tests: { value: "+100", label: "Pruebas end-to-end" },
+      location: { value: "España", label: "Remoto mundial" },
     },
     actions: {
       email: "Correo electrónico",

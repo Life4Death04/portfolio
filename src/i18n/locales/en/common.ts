@@ -28,9 +28,9 @@ export const en = {
     portraitDescription: "Santiago Rodríguez wearing a black suit and tie",
     metrics: {
       clients: { value: "+2", label: "Client engagements" },
-      screens: { value: "+22", label: "API-connected screens" },
-      tests: { value: "+5", label: "End-to-end tests" },
-      location: { value: "Elche, Spain", label: "Remote worldwide" },
+      screens: { value: "+200", label: "API-connected screens" },
+      tests: { value: "+100", label: "End-to-end tests" },
+      location: { value: "Spain", label: "Remote worldwide" },
     },
     actions: {
       email: "Email",
