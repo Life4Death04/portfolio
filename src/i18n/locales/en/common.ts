@@ -27,9 +27,9 @@ export const en = {
     cta: "Download resume",
     portraitDescription: "Santiago Rodríguez wearing a black suit and tie",
     metrics: {
-      clients: { value: "+2", label: "Client engagements" },
+      clients: { value: "+3", label: "Years of development" },
       screens: { value: "+200", label: "API-connected screens" },
-      tests: { value: "+100", label: "End-to-end tests" },
+      tests: { value: "+50", label: "End-to-end tests" },
       location: { value: "Spain", label: "Remote worldwide" },
     },
     actions: {
@@ -51,11 +51,17 @@ export const en = {
       frontend: {
         title: "Frontend Technologies",
       },
-      backend: {
-        title: "Backend Technologies",
+      testingAndIntegration: {
+        title: "Testing & Integration",
       },
-      tools: {
-        title: "Tools & Software",
+      backendAndData: {
+        title: "Backend & Data Technologies",
+      },
+      toolsAndDelivery: {
+        title: "Tools & Delivery",
+      },
+      developmentApproach: {
+        title: "Development Approaches",
       },
     },
     learning: {
@@ -111,7 +117,7 @@ export const en = {
     facts: {
       education: {
         label: "Education",
-        value: "IT Systems Engineer · Degree issuance pending",
+        value: "IT Systems Engineer",
       },
       experience: {
         label: "Current role",

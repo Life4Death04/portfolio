@@ -27,9 +27,9 @@ export const es = {
     cta: "Descargar CV",
     portraitDescription: "Santiago Rodríguez con traje negro y corbata",
     metrics: {
-      clients: { value: "+2", label: "Proyectos con clientes" },
+      clients: { value: "+3", label: "Años de desarrollo" },
       screens: { value: "+200", label: "Pantallas conectadas a APIs" },
-      tests: { value: "+100", label: "Pruebas end-to-end" },
+      tests: { value: "+50", label: "Pruebas end-to-end" },
       location: { value: "España", label: "Remoto mundial" },
     },
     actions: {
@@ -49,18 +49,20 @@ export const es = {
     toolsLabel: "Herramientas y tecnologías",
     groups: {
       frontend: {
-        title: "Tecnologías frontend",
+        title: "Tecnologías Frontend",
       },
-      backend: {
-        title: "Tecnologías backend",
+      testingAndIntegration: {
+        title: "Pruebas e Integración",
       },
-      tools: {
-        title: "Herramientas y software",
+      backendAndData: {
+        title: "Tecnologías Backend y de Datos",
       },
-    },
-    learning: {
-      label: "Actualmente aprendiendo",
-      description: "Explorando nuevas tecnologías…",
+      toolsAndDelivery: {
+        title: "Herramientas y Entrega",
+      },
+      developmentApproach: {
+        title: "Metodologías de desarrollo",
+      },
     },
   },
   projects: {
@@ -111,7 +113,7 @@ export const es = {
     facts: {
       education: {
         label: "Educación",
-        value: "Ingeniero de Sistemas de TI · Emisión del título pendiente",
+        value: "Ingeniero de Sistemas de TI",
       },
       experience: {
         label: "Rol actual",

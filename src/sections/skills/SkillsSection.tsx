@@ -74,7 +74,7 @@ export function SkillsSection() {
                   <li key={technology}>{technology}</li>
                 ))}
               </ul>
-              {group.key === "tools" && (
+              {/* {group.key === "tools" && (
                 <footer className="skills-learning">
                   <span className="skills-learning-label">
                     {t("skills.learning.label")}
@@ -84,7 +84,7 @@ export function SkillsSection() {
                     {t("skills.learning.description")}
                   </p>
                 </footer>
-              )}
+              )} */}
             </article>
           </motion.li>
         ))}
