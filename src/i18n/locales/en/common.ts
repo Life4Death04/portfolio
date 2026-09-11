@@ -111,7 +111,7 @@ export const en = {
     titleLead: "About",
     titleAccent: "Me",
     description:
-      "I’m a 22-year-old Venezuelan who has loved building things since childhood. Whether addressing an everyday need or a complex business process, I enjoy turning ideas into clear, useful, and tangible solutions and creating interfaces that are useful, thoughtful, and reliable.",
+      "I’m a Venezuelan developer driven by the challenge of turning real problems into clear, useful digital solutions. I combine thoughtful frontend engineering with a broader understanding of systems, allowing me to build experiences that are intuitive for users, reliable in practice, and grounded in genuine business needs.",
     portraitDescription:
       "Portrait of Santiago Rodríguez wearing a black suit and tie",
     facts: {
@@ -121,7 +121,7 @@ export const en = {
       },
       experience: {
         label: "Current role",
-        value: "Independent Frontend Developer",
+        value: "Frontend Developer",
       },
       focus: {
         label: "Focus",

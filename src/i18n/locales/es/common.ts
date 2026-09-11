@@ -107,7 +107,7 @@ export const es = {
     titleLead: "Acerca de",
     titleAccent: "mí",
     description:
-      "Soy un venezolano de 22 años a quien le encanta construir cosas desde la infancia. Ya sea para atender una necesidad cotidiana o un proceso empresarial complejo, disfruto convertir ideas en soluciones claras, útiles y tangibles, y crear interfaces útiles, cuidadas y fiables.",
+      "Soy un desarrollador venezolano motivado por el desafío de convertir problemas reales en soluciones digitales claras y útiles. Combino una ingeniería frontend reflexiva con un entendimiento más amplio de los sistemas, lo que me permite crear experiencias intuitivas para los usuarios, confiables en la práctica y fundamentadas en necesidades comerciales genuinas.",
     portraitDescription:
       "Retrato de Santiago Rodríguez con traje negro y corbata",
     facts: {
@@ -117,7 +117,7 @@ export const es = {
       },
       experience: {
         label: "Rol actual",
-        value: "Desarrollador frontend independiente",
+        value: "Desarrollador frontend",
       },
       focus: {
         label: "Enfoque",
