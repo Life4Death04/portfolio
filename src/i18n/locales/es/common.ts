@@ -47,6 +47,7 @@ export const es = {
     description:
       "Mi enfoque es el desarrollo frontend con React y TypeScript, respaldado por conocimientos prácticos de tecnologías backend y de datos. Comprender cómo interactúa cada capa me ayuda a crear mejores integraciones y a tomar decisiones frontend más sólidas.",
     toolsLabel: "Herramientas y tecnologías",
+    alsoWorkingWith: "También trabajo con",
     groups: {
       frontend: {
         title: "Tecnologías Frontend",
@@ -62,6 +63,16 @@ export const es = {
       },
       developmentApproach: {
         title: "Metodologías de desarrollo",
+        items: [
+          "Flujos de trabajo de desarrollo agéntico",
+          "Orquestación de codificación con IA",
+          "Desarrollo guiado por especificaciones (SDD)",
+          "Desarrollo guiado por pruebas (TDD)",
+          "Diseño orientado al dominio (DDD)",
+          "Metodologías ágiles",
+          "Metodología de sistemas blandos (SSM)",
+          "Análisis de requisitos",
+        ],
       },
     },
   },
