@@ -1,123 +1,94 @@
 import { render, screen, within } from "@testing-library/react";
-import { describe, expect, it } from "vitest";
+import { describe, expect, it, beforeEach } from "vitest";
 import { i18n } from "../../i18n";
 import { SkillsSection } from "./SkillsSection";
 
 describe("SkillsSection", () => {
-  it("renders the exact skill categories and technology order", () => {
+  beforeEach(async () => {
+    await i18n.changeLanguage("en");
+  });
+
+  it("renders five skill group cards", () => {
     render(<SkillsSection />);
-
     const section = screen.getByRole("region", { name: "Technical Skills" });
-    const groups = within(section).getAllByRole("article");
-    const expectedGroups = [
-      {
-        title: "Frontend Technologies",
-        technologies: [
-          "HTML5",
-          "CSS3",
-          "JavaScript",
-          "TypeScript",
-          "React.js",
-          "React Router",
-          "TanStack Query",
-          "Redux Toolkit",
-          "Zustand",
-          "Next.js",
-          "React Hook Form",
-          "Zod",
-          "Vite",
-          "TanStack Start",
-          "Tailwind CSS",
-          "MUI Components",
-          "Framer Motion",
-          "React Testing Library",
-          "Axios",
-          "Auth0",
-          "Better Auth",
-        ],
-      },
-      {
-        title: "Backend Technologies",
-        technologies: [
-          "Node.js",
-          "Express.js",
-          "Prisma ORM",
-          "MySQL",
-          "PostgreSQL",
-          "REST APIs",
-          "GraphQL",
-          "JWT Authentication",
-          "Vitest",
-        ],
-      },
-      {
-        title: "Tools & Software",
-        technologies: [
-          "VSCode",
-          "Git",
-          "GitHub",
-          "Insomnia",
-          "Postman",
-          "Notion",
-          "Docker",
-          "AWS S3",
-          "AWS EC2",
-          "AWS SES",
-        ],
-      },
-    ];
+    expect(within(section).getAllByRole("article")).toHaveLength(5);
+  });
 
-    expect(groups).toHaveLength(3);
-    expectedGroups.forEach((expected, index) => {
+  it("renders all group headings in English", () => {
+    render(<SkillsSection />);
+    const headings = [
+      "Frontend Technologies",
+      "Testing & Integration",
+      "Backend & Data Technologies",
+      "Tools & Delivery",
+      "Development Approaches",
+    ];
+    headings.forEach((heading) => {
       expect(
-        within(groups[index]).getByRole("heading", { name: expected.title }),
+        screen.getByRole("heading", { name: heading }),
       ).toBeInTheDocument();
-      expect(
-        within(groups[index])
-          .getAllByRole("listitem")
-          .map((item) => item.textContent),
-      ).toEqual(expected.technologies);
     });
   });
 
-  it("keeps the learning status inside the Tools card without proficiency UI", () => {
+  it("renders primary tech badges with brand border color", () => {
     render(<SkillsSection />);
-
-    const section = screen.getByRole("region", { name: "Technical Skills" });
-    const toolsCard = within(section)
-      .getByRole("heading", { name: "Tools & Software" })
-      .closest("article");
-
-    expect(toolsCard).not.toBeNull();
-    expect(
-      within(toolsCard!).getByText("Currently learning"),
-    ).toBeInTheDocument();
-    expect(
-      within(toolsCard!).getByText("Exploring new technologies…"),
-    ).toBeInTheDocument();
-    expect(within(section).queryByRole("progressbar")).not.toBeInTheDocument();
-    expect(
-      within(section).queryByText(/proficien|expert|%/i),
-    ).not.toBeInTheDocument();
+    const badges = document.querySelectorAll(".tech-badge");
+    expect(badges.length).toBeGreaterThan(0);
+    // React tech badge should have inline borderColor
+    const reactBadge = Array.from(badges).find(
+      (b) => b.textContent === "React",
+    );
+    expect(reactBadge).toBeDefined();
+    expect((reactBadge as HTMLElement).style.borderColor).toBe(
+      "rgb(97, 218, 251)",
+    );
   });
 
-  it("localizes section content in Spanish while preserving technology names", async () => {
+  it("renders 'Also working with' label only in groups that have primary items", () => {
+    render(<SkillsSection />);
+    const labels = screen.getAllByText("Also working with");
+    // Groups with primary items: frontend, testingAndIntegration, backendAndData, toolsAndDelivery → 4 labels
+    // developmentApproach has no primary → no label
+    expect(labels).toHaveLength(4);
+  });
+
+  it("secondary skills appear as plain text chips", () => {
+    render(<SkillsSection />);
+    expect(screen.getByText("Zustand")).toBeInTheDocument();
+    expect(screen.getByText("Zod")).toBeInTheDocument();
+    expect(screen.getByText("Playwright")).toBeInTheDocument();
+    expect(screen.getByText("JWT Authentication")).toBeInTheDocument();
+  });
+
+  it("developmentApproach renders all items without an also-working-with label", () => {
+    render(<SkillsSection />);
+    const section = screen.getByRole("region", { name: "Technical Skills" });
+    const approachCard = within(section)
+      .getByRole("heading", { name: "Development Approaches" })
+      .closest("article");
+    expect(approachCard).not.toBeNull();
+    expect(
+      within(approachCard!).queryByText("Also working with"),
+    ).not.toBeInTheDocument();
+    expect(
+      within(approachCard!).getByText("Agile Methodologies"),
+    ).toBeInTheDocument();
+  });
+
+  it("localizes section and group titles in Spanish", async () => {
     await i18n.changeLanguage("es");
     render(<SkillsSection />);
-
     expect(
       screen.getByRole("region", { name: "Habilidades técnicas" }),
     ).toBeInTheDocument();
     expect(
-      screen.getByRole("heading", { name: "Tecnologías frontend" }),
+      screen.getByRole("heading", { name: "Tecnologías Frontend" }),
     ).toBeInTheDocument();
-    expect(screen.getByText("Herramientas y software")).toBeInTheDocument();
-    expect(screen.getByText("Actualmente aprendiendo")).toBeInTheDocument();
     expect(
-      screen.getByText("Explorando nuevas tecnologías…"),
+      screen.getByText("Metodologías de desarrollo"),
     ).toBeInTheDocument();
-    expect(screen.getByText("React Hook Form")).toBeInTheDocument();
-    expect(screen.getByText("TanStack Query")).toBeInTheDocument();
-    expect(screen.getByText("Better Auth")).toBeInTheDocument();
+    // Tech names stay in English
+    expect(screen.getByText("React")).toBeInTheDocument();
+    expect(screen.getByText("TypeScript")).toBeInTheDocument();
   });
 });

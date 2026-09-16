@@ -47,6 +47,7 @@ export const en = {
     description:
       "My focus is frontend development with React and TypeScript, supported by working knowledge of backend and data technologies. Understanding how every layer interacts helps me build better integrations and make stronger frontend decisions.",
     toolsLabel: "Tools and technologies",
+    alsoWorkingWith: "Also working with",
     groups: {
       frontend: {
         title: "Frontend Technologies",
@@ -62,6 +63,16 @@ export const en = {
       },
       developmentApproach: {
         title: "Development Approaches",
+        items: [
+          "Agentic development workflows",
+          "AI Coding Orchestration",
+          "Specification-Driven Development (SDD)",
+          "Test-Driven Development (TDD)",
+          "Domain-Driven Design (DDD)",
+          "Agile Methodologies",
+          "Soft Systems Methodology (SSM)",
+          "Requirement Analysis",
+        ],
       },
     },
     learning: {
