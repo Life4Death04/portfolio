@@ -1776,10 +1776,6 @@ a {
     padding: 14px 14px 26px;
   }
 
-  .project-card-inventoryManagement {
-    display: none;
-  }
-
   .project-media {
     aspect-ratio: 4 / 3;
   }
