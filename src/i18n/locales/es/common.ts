@@ -86,29 +86,31 @@ export const es = {
     descriptionDetail:
       " Cada proyecto demuestra mis habilidades para crear experiencias de usuario sólidas y código optimizado.",
     mediaPlaceholder: "Imagen del proyecto",
-    mediaLabel: "Lámina decorativa del proyecto {{title}}",
+    mediaLabel: "Captura de pantalla de {{title}}",
     technologiesLabel: "Tecnologías utilizadas en {{title}}",
     more: "+{{count}} más",
     actions: {
       code: "Ver código",
+      demo: "Demo en vivo",
       project: "Ver proyecto",
       projectShort: "Proyecto",
+      demoShort: "Demo",
     },
     items: {
       productCatalog: {
         title: "Autopartes Rausseo",
         description:
-          "Procesos complejos de inventario y catálogo de productos transformados en experiencias digitales claramente definidas para clientes, operadores y administradores.",
-      },
-      ecommerce: {
-        title: "Mercado de Productos Artesanales",
-        description:
-          "Un mercado digital que conecta el descubrimiento de productos y el pago con el inventario, la gestión de pedidos y la administración de cuentas para tres roles de usuario (Cliente, Vendedor, Administrador).",
+          "Plataforma de catálogo y administración para una tienda de autopartes, enfocada en ayudar al equipo a gestionar piezas y a los clientes a enviar consultas por WhatsApp.",
       },
       inventoryManagement: {
         title: "Gestión de Inventario Farmacéutico",
         description:
-          "Una aplicación basada en roles que centraliza productos, categorías, proveedores y usuarios en un único proceso estructurado de inventario.",
+          "Sistema de inventario desarrollado para Farmacia HighMeds, cuyo objetivo es ayudar al equipo a gestionar productos, proveedores, niveles de stock, alertas y necesidades de reposición.",
+      },
+      ecommerce: {
+        title: "Mercado de Productos Artesanales",
+        description:
+          "Proyecto final universitario: un marketplace multi-vendedor que organiza pedidos de productos, pagos seguros y flujos de trabajo basados en roles para vendedores, compradores y administradores.",
       },
     },
   },

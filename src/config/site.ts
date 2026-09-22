@@ -14,7 +14,10 @@ export const SITE_CONFIG = {
     projects: "#projects",
     about: "#about",
     contact: "#contact",
-    resume: "/santiago-rodriguez-resume.pdf",
+    resumes: {
+      en: "/Santiago Rodriguez - Frontend Resume - EN.pdf",
+      es: "/Santiago Rodriguez - Frontend Resume - ES.pdf",
+    } satisfies Record<SupportedLanguage, string>,
     email: "mailto:santiagodrm@gmail.com",
     github: "https://github.com/Life4Death04",
     linkedin: "https://www.linkedin.com/in/santiagodrm-rodriguez/",

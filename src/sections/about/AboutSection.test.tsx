@@ -1,7 +1,7 @@
 import { render, screen, within } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 import { SITE_CONFIG } from "../../config/site";
-import { i18n } from "../../i18n";
+import { getResumeUrl, i18n } from "../../i18n";
 import { AboutSection } from "./AboutSection";
 
 const ENGLISH_FACTS = [
@@ -68,7 +68,7 @@ describe("AboutSection", () => {
     });
 
     expect(contact).toHaveAttribute("href", SITE_CONFIG.links.email);
-    expect(cv).toHaveAttribute("href", SITE_CONFIG.links.resume);
+    expect(cv).toHaveAttribute("href", getResumeUrl("en"));
     expect(cv).toHaveAttribute("download");
     expect(github).toHaveAttribute("href", SITE_CONFIG.links.github);
     expect(linkedin).toHaveAttribute("href", SITE_CONFIG.links.linkedin);
@@ -106,7 +106,7 @@ describe("AboutSection", () => {
     ).toBeInTheDocument();
     expect(
       within(section).getByRole("link", { name: "Descargar CV" }),
-    ).toHaveAttribute("href", SITE_CONFIG.links.resume);
+    ).toHaveAttribute("href", getResumeUrl("es"));
     expect(
       within(section).getByRole("link", { name: "Descargar CV" }),
     ).toHaveAttribute("download");

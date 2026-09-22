@@ -2,7 +2,6 @@ import { motion, useReducedMotion } from "motion/react";
 import type { Variants } from "motion/react";
 import { useTranslation } from "react-i18next";
 import { SCROLL_REVEAL_VIEWPORT } from "../../lib/motion";
-import { ProjectVisual } from "./ProjectVisual";
 import { PROJECTS, type ProjectAction, type ProjectRecord } from "./projects";
 
 const PROJECTS_EASING = [0.2, 0.7, 0.2, 1] as const;
@@ -77,12 +76,12 @@ export function ProjectsSection() {
                 CARD_DELAYS[index],
               )}
             >
-              <div
-                className="project-media"
-                role="img"
-                aria-label={t("projects.mediaLabel", { title })}
-              >
-                <ProjectVisual kind={project.key} />
+              <div className="project-media">
+                <img
+                  src={project.image}
+                  alt={t("projects.mediaLabel", { title })}
+                  loading="lazy"
+                />
               </div>
 
               <article className="project-content">
@@ -112,9 +111,9 @@ export function ProjectsSection() {
                     const content = (
                       <span aria-hidden="true">
                         <span className="project-action-long">{label}</span>
-                        {action === "project" && (
+                        {(action === "project" || action === "demo") && (
                           <span className="project-action-short">
-                            {t("projects.actions.projectShort")}
+                            {t(`projects.actions.${action}Short`)}
                           </span>
                         )}
                       </span>

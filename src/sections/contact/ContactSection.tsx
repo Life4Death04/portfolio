@@ -2,34 +2,8 @@ import { motion, useReducedMotion } from "motion/react";
 import type { FormEvent } from "react";
 import { useTranslation } from "react-i18next";
 import { SITE_CONFIG } from "../../config/site";
+import { getResumeUrl } from "../../i18n";
 import { createRevealVariants, SCROLL_REVEAL_VIEWPORT } from "../../lib/motion";
-
-const CONTACT_ACTIONS = [
-  {
-    key: "github",
-    direction: "external",
-    href: SITE_CONFIG.links.github,
-    external: true,
-  },
-  {
-    key: "linkedin",
-    direction: "external",
-    href: SITE_CONFIG.links.linkedin,
-    external: true,
-  },
-  {
-    key: "downloadCv",
-    direction: "download",
-    href: SITE_CONFIG.links.resume,
-    external: false,
-  },
-  {
-    key: "email",
-    direction: "external",
-    href: SITE_CONFIG.links.email,
-    external: false,
-  },
-] as const;
 
 function GitHubIcon() {
   return (
@@ -84,9 +58,36 @@ const ACTION_ICONS = {
 } as const;
 
 export function ContactSection() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const reduceMotion = useReducedMotion() ?? false;
   const emailAddress = SITE_CONFIG.links.email.replace("mailto:", "");
+
+  const contactActions = [
+    {
+      key: "github",
+      direction: "external",
+      href: SITE_CONFIG.links.github,
+      external: true,
+    },
+    {
+      key: "linkedin",
+      direction: "external",
+      href: SITE_CONFIG.links.linkedin,
+      external: true,
+    },
+    {
+      key: "downloadCv",
+      direction: "download",
+      href: getResumeUrl(i18n.language),
+      external: false,
+    },
+    {
+      key: "email",
+      direction: "external",
+      href: SITE_CONFIG.links.email,
+      external: false,
+    },
+  ] as const;
 
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -203,7 +204,7 @@ export function ContactSection() {
             variants={createRevealVariants(reduceMotion, 0.24)}
           >
             <div className="contact-action-list">
-              {CONTACT_ACTIONS.map((action) => {
+              {contactActions.map((action) => {
                 const label = t(`contact.actions.${action.key}`);
                 const content = (
                   <>

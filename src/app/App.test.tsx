@@ -2,7 +2,7 @@ import { render, screen, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { describe, expect, it } from "vitest";
 import { SITE_CONFIG } from "../config/site";
-import { LANGUAGE_STORAGE_KEY } from "../i18n";
+import { getResumeUrl, LANGUAGE_STORAGE_KEY } from "../i18n";
 import { App } from "./App";
 
 describe("App", () => {
@@ -48,7 +48,10 @@ describe("App", () => {
       email: "mailto:santiagodrm@gmail.com",
       github: "https://github.com/Life4Death04",
       linkedin: "https://www.linkedin.com/in/santiagodrm-rodriguez/",
-      resume: "/santiago-rodriguez-resume.pdf",
+      resumes: {
+        en: "/Santiago Rodriguez - Frontend Resume - EN.pdf",
+        es: "/Santiago Rodriguez - Frontend Resume - ES.pdf",
+      },
     });
 
     const home = screen.getByRole("region", { name: /Santiago Rodríguez/i });
@@ -65,7 +68,7 @@ describe("App", () => {
       name: "LinkedIn (opens in a new tab)",
     });
 
-    expect(resume).toHaveAttribute("href", SITE_CONFIG.links.resume);
+    expect(resume).toHaveAttribute("href", getResumeUrl("en"));
     expect(resume).toHaveAttribute("download");
     expect(email).toHaveAttribute("href", SITE_CONFIG.links.email);
     expect(github).toHaveAttribute("href", SITE_CONFIG.links.github);
@@ -127,7 +130,7 @@ describe("App", () => {
       screen.getByRole("region", { name: /Santiago Rodríguez/i }),
     ).getByRole("link", { name: "Descargar CV" });
 
-    expect(resume).toHaveAttribute("href", SITE_CONFIG.links.resume);
+    expect(resume).toHaveAttribute("href", getResumeUrl("es"));
     expect(resume).toHaveAttribute("download");
     expect(document.documentElement).toHaveAttribute("lang", "es");
     expect(localStorage.getItem(LANGUAGE_STORAGE_KEY)).toBe("es");

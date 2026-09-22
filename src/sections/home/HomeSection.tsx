@@ -9,6 +9,7 @@ import {
 } from "motion/react";
 import { useTranslation } from "react-i18next";
 import { SITE_CONFIG } from "../../config/site";
+import { getResumeUrl } from "../../i18n";
 import { createRevealVariants, createStaggerVariants } from "../../lib/motion";
 
 const metrics = ["clients", "screens", "tests", "location"] as const;
@@ -93,7 +94,7 @@ function LinkedInIcon() {
 }
 
 export function HomeSection() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const reduceMotion = useReducedMotion() ?? false;
   const itemVariants = createRevealVariants(reduceMotion);
 
@@ -177,7 +178,11 @@ export function HomeSection() {
       </motion.dl>
 
       <motion.div className="home-actions" variants={itemVariants}>
-        <a className="primary-action" href={SITE_CONFIG.links.resume} download>
+        <a
+          className="primary-action"
+          href={getResumeUrl(i18n.language)}
+          download
+        >
           {t("home.cta")}
         </a>
         <div className="social-links">

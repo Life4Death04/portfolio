@@ -2,6 +2,7 @@ import { motion, useReducedMotion } from "motion/react";
 import type { Variants } from "motion/react";
 import { useTranslation } from "react-i18next";
 import { SITE_CONFIG } from "../../config/site";
+import { getResumeUrl } from "../../i18n";
 import { SCROLL_REVEAL_VIEWPORT } from "../../lib/motion";
 
 const ABOUT_EASING = [0.2, 0.7, 0.2, 1] as const;
@@ -58,7 +59,7 @@ function LinkedInIcon() {
 }
 
 export function AboutSection() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const reduceMotion = useReducedMotion() ?? false;
 
   const socialLinks = [
@@ -139,7 +140,7 @@ export function AboutSection() {
         <a className="about-contact" href={SITE_CONFIG.links.email}>
           {t("about.actions.contact")}
         </a>
-        <a className="about-cv" href={SITE_CONFIG.links.resume} download>
+        <a className="about-cv" href={getResumeUrl(i18n.language)} download>
           {t("about.actions.downloadCv")}
         </a>
         <div className="about-socials">

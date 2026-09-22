@@ -2,7 +2,7 @@ import { render, screen, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { describe, expect, it, vi } from "vitest";
 import { SITE_CONFIG } from "../../config/site";
-import { i18n } from "../../i18n";
+import { getResumeUrl, i18n } from "../../i18n";
 import { ContactSection } from "./ContactSection";
 
 describe("ContactSection", () => {
@@ -68,7 +68,7 @@ describe("ContactSection", () => {
       expect(externalLink).toHaveAttribute("rel", "noopener noreferrer");
     }
 
-    expect(cv).toHaveAttribute("href", SITE_CONFIG.links.resume);
+    expect(cv).toHaveAttribute("href", getResumeUrl("en"));
     expect(cv).toHaveAttribute("download");
     expect(screen.getByText("Download PDF")).toBeInTheDocument();
     expect(screen.getByRole("link", { name: /Email/i })).toHaveAttribute(
@@ -133,7 +133,7 @@ describe("ContactSection", () => {
     ).toHaveAttribute("placeholder", "ana@empresa.com");
     expect(
       within(section).getByRole("link", { name: "Descargar CV" }),
-    ).toHaveAttribute("href", SITE_CONFIG.links.resume);
+    ).toHaveAttribute("href", getResumeUrl("es"));
     expect(
       within(section).getByRole("link", { name: "Descargar CV" }),
     ).toHaveAttribute("download");
