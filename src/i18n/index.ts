@@ -18,6 +18,12 @@ export function normalizeLanguage(language?: string): SupportedLanguage {
     : SITE_CONFIG.defaultLanguage;
 }
 
+export function getResumeUrl(language?: string): string {
+  const resumeLanguage = normalizeLanguage(language);
+
+  return encodeURI(SITE_CONFIG.links.resumes[resumeLanguage]);
+}
+
 function getInitialLanguage(): SupportedLanguage {
   if (import.meta.env.MODE === "test" || typeof navigator === "undefined") {
     return SITE_CONFIG.defaultLanguage;
