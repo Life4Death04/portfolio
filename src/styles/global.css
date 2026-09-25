@@ -629,6 +629,44 @@ main > section:first-child {
   box-shadow: inset 0 1px rgb(255 255 255 / 4%);
 }
 
+/* Primary tech badge — icon + branded border */
+.tech-badge {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 7px 12px;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  color: #c9cbcd;
+  font-size: 14px;
+  background: rgb(255 255 255 / 2.5%);
+  box-shadow: inset 0 1px rgb(255 255 255 / 4%);
+}
+
+.tech-badge svg {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+}
+
+/* Secondary skills sub-section */
+.skills-also-with {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: auto;
+  padding-top: 20px;
+  border-top: 1px solid rgb(255 255 255 / 8%);
+}
+
+.skills-also-with-label {
+  color: #6f7276;
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  font-family: var(--font-mono);
+}
+
 .skills-learning {
   display: flex;
   flex-direction: column;
@@ -745,50 +783,11 @@ main > section:first-child {
   box-shadow: inset 0 1px rgb(255 255 255 / 4%);
 }
 
-.project-plate {
-  display: block;
+.project-media img {
   width: 100%;
   height: 100%;
-}
-
-.plate-grid,
-.plate-line,
-.plate-crosshair {
-  fill: none;
-  stroke: rgb(242 242 240 / 12%);
-  stroke-width: 1;
-  vector-effect: non-scaling-stroke;
-}
-
-.plate-grid {
-  stroke: rgb(242 242 240 / 5%);
-}
-
-.plate-surface {
-  fill: rgb(242 242 240 / 4%);
-  stroke: rgb(242 242 240 / 14%);
-}
-
-.plate-line-muted {
-  stroke: rgb(242 242 240 / 9%);
-}
-
-.plate-title-line {
-  stroke: rgb(242 242 240 / 30%);
-  stroke-width: 2;
-}
-
-.plate-lane {
-  stroke-dasharray: 3 5;
-}
-
-.plate-signal {
-  fill: var(--color-accent);
-  filter: drop-shadow(0 0 8px rgb(211 151 55 / 45%));
-}
-
-.plate-crosshair {
-  stroke: rgb(211 151 55 / 42%);
+  object-fit: cover;
+  object-position: top;
 }
 
 .project-content {
@@ -867,7 +866,8 @@ main > section:first-child {
   color: #0b0b0c;
 }
 
-.project-action-project {
+.project-action-project,
+.project-action-demo {
   border: 1px solid rgb(255 255 255 / 16%);
   background: rgb(255 255 255 / 4%);
   color: #f2f3f4;
@@ -1680,6 +1680,17 @@ a {
     font-size: 13px;
   }
 
+  .tech-badge {
+    padding: 6px 11px;
+    font-size: 13px;
+    gap: 6px;
+  }
+
+  .tech-badge svg {
+    width: 13px;
+    height: 13px;
+  }
+
   .skills-learning {
     padding-top: 22px;
   }
@@ -1725,10 +1736,6 @@ a {
   .project-card {
     gap: 20px;
     padding: 14px 14px 26px;
-  }
-
-  .project-card-inventoryManagement {
-    display: none;
   }
 
   .project-media {
@@ -1778,7 +1785,8 @@ a {
     padding: 0;
   }
 
-  .project-action-project .project-action-long {
+  .project-action-project .project-action-long,
+  .project-action-demo .project-action-long {
     display: none;
   }
 

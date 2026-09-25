@@ -47,6 +47,7 @@ export const en = {
     description:
       "My focus is frontend development with React and TypeScript, supported by working knowledge of backend and data technologies. Understanding how every layer interacts helps me build better integrations and make stronger frontend decisions.",
     toolsLabel: "Tools and technologies",
+    alsoWorkingWith: "Also working with",
     groups: {
       frontend: {
         title: "Frontend Technologies",
@@ -62,6 +63,16 @@ export const en = {
       },
       developmentApproach: {
         title: "Development Approaches",
+        items: [
+          "Agentic development workflows",
+          "AI Coding Orchestration",
+          "Specification-Driven Development (SDD)",
+          "Test-Driven Development (TDD)",
+          "Domain-Driven Design (DDD)",
+          "Agile Methodologies",
+          "Soft Systems Methodology (SSM)",
+          "Requirement Analysis",
+        ],
       },
     },
     learning: {
@@ -79,29 +90,31 @@ export const en = {
     descriptionDetail:
       " Each project is a demonstration of my skills in creating solid user experiences and optimized code.",
     mediaPlaceholder: "Project shot",
-    mediaLabel: "Decorative case-study plate for {{title}}",
+    mediaLabel: "Screenshot of {{title}}",
     technologiesLabel: "Technologies used in {{title}}",
     more: "+{{count}} more",
     actions: {
       code: "View code",
+      demo: "Live demo",
       project: "View project",
       projectShort: "Project",
+      demoShort: "Demo",
     },
     items: {
       productCatalog: {
         title: "Autoparts Rausseo",
         description:
-          "Complex inventory and product-catalog workflows transformed into clearly defined digital experiences for customers, operators, and administrators.",
-      },
-      ecommerce: {
-        title: "Artisanal Food Marketplace",
-        description:
-          "A digital marketplace connecting product discovery and checkout with inventory, fulfillment, and account management across three user roles (Customer, Seller, Admin).",
+          "Automotive catalog and administration platform for an auto parts store, helping teams manage parts and customers submit WhatsApp inquiries.",
       },
       inventoryManagement: {
         title: "Pharmacy Inventory Management",
         description:
-          "A role-based application that centralizes products, categories, suppliers, and users into one structured inventory workflow.",
+          "Inventory system built for HighMeds Pharmacy, helping pharmacy teams manage products, suppliers, stock levels, alerts, and replenishment needs.",
+      },
+      ecommerce: {
+        title: "Artisanal Food Marketplace",
+        description:
+          "Final university project: a multi-vendor marketplace that organizes product orders, secure payments, and role-based workflows for sellers, buyers, and administrators.",
       },
     },
   },

@@ -5,7 +5,7 @@ import { SCROLL_REVEAL_VIEWPORT } from "../../lib/motion";
 import { SKILL_GROUPS } from "./skills";
 
 const SKILLS_EASING = [0.2, 0.7, 0.2, 1] as const;
-const CARD_DELAYS = [0.24, 0.34, 0.44] as const;
+const CARD_DELAYS = [0.24, 0.34, 0.44, 0.54, 0.64] as const;
 
 function createSkillsRevealVariants(
   reduceMotion: boolean,
@@ -66,25 +66,51 @@ export function SkillsSection() {
               <header className="skill-group-header">
                 <h3>{t(`skills.groups.${group.key}.title`)}</h3>
               </header>
-              <ul
-                className="technology-list"
-                aria-label={t("skills.toolsLabel")}
-              >
-                {group.technologies.map((technology) => (
-                  <li key={technology}>{technology}</li>
-                ))}
-              </ul>
-              {/* {group.key === "tools" && (
-                <footer className="skills-learning">
-                  <span className="skills-learning-label">
-                    {t("skills.learning.label")}
-                  </span>
-                  <p>
-                    <span aria-hidden="true" />
-                    {t("skills.learning.description")}
-                  </p>
-                </footer>
-              )} */}
+
+              {group.primary.length > 0 && (
+                <ul
+                  className="technology-list"
+                  aria-label={t("skills.toolsLabel")}
+                >
+                  {group.primary.map((tech) => (
+                    <li
+                      key={tech.name}
+                      className="tech-badge"
+                      style={{ borderColor: tech.color }}
+                    >
+                      <tech.icon aria-hidden="true" />
+                      <span>{tech.name}</span>
+                    </li>
+                  ))}
+                </ul>
+              )}
+
+              {(() => {
+                const items = group.secondaryI18nKey
+                  ? (t(group.secondaryI18nKey, { returnObjects: true }) as string[])
+                  : group.secondary;
+                return items.length > 0 ? (
+                  <div
+                    className={
+                      group.primary.length > 0 ? "skills-also-with" : undefined
+                    }
+                  >
+                    {group.primary.length > 0 && (
+                      <span className="skills-also-with-label">
+                        {t("skills.alsoWorkingWith")}
+                      </span>
+                    )}
+                    <ul
+                      className="technology-list"
+                      aria-label={t("skills.toolsLabel")}
+                    >
+                      {items.map((name) => (
+                        <li key={name}>{name}</li>
+                      ))}
+                    </ul>
+                  </div>
+                ) : null;
+              })()}
             </article>
           </motion.li>
         ))}

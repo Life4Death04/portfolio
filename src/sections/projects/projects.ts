@@ -1,10 +1,11 @@
-export type ProjectAction = "code" | "project";
+export type ProjectAction = "code" | "project" | "demo";
 
 export type ProjectRecord = {
   key: "productCatalog" | "ecommerce" | "inventoryManagement";
   technologies: readonly string[];
   additionalTechnologies: number;
   actions: readonly ProjectAction[];
+  image: string;
   codeUrl?: string;
   projectUrl?: string;
 };
@@ -12,23 +13,30 @@ export type ProjectRecord = {
 export const PROJECTS: readonly ProjectRecord[] = [
   {
     key: "productCatalog",
-    technologies: ["React.js", "Node.js", "TypeScript"],
-    additionalTechnologies: 3,
-    actions: ["code", "project"],
+    technologies: ["React", "TypeScript", "TanStack Start", "Prisma"],
+    additionalTechnologies: 5,
+    actions: ["project"],
+    image: "/images/projects/AutopartsRausseo.png",
     codeUrl: "https://github.com/Life4Death04/autoparts-rausseo",
-  },
-  {
-    key: "ecommerce",
-    technologies: ["React.js", "Express.js", "Node.js"],
-    additionalTechnologies: 2,
-    actions: ["code", "project"],
-    codeUrl: "https://github.com/Life4Death04/mercado-artesanal-tesis",
+    projectUrl: "https://autoparts-rausseo-production-ed95.up.railway.app/",
   },
   {
     key: "inventoryManagement",
-    technologies: ["React.js", "Node.js", "Socket.io"],
-    additionalTechnologies: 2,
-    actions: ["code", "project"],
+    technologies: ["React", "TypeScript", "Express", "PostgreSQL"],
+    additionalTechnologies: 5,
+    actions: ["demo"],
+    image: "/images/projects/PharmacyInventoryManagement.png",
     codeUrl: "https://github.com/Life4Death04/sistema-inventario-frontend",
+    projectUrl:
+      "https://sistema-inventario-frontend-production.up.railway.app/productos",
+  },
+  {
+    key: "ecommerce",
+    technologies: ["React", "TypeScript", "Express", "PostgreSQL"],
+    additionalTechnologies: 5,
+    actions: ["code", "demo"],
+    image: "/images/projects/ArtisanalFoodMarketplace.png",
+    codeUrl: "https://github.com/Life4Death04/mercado-artesanal-tesis",
+    projectUrl: "https://mercado-artesanal-tesis-production.up.railway.app/",
   },
 ] as const;
