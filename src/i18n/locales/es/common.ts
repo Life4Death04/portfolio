@@ -21,9 +21,9 @@ export const es = {
   home: {
     availability: "Disponible para nuevos proyectos — septiembre de 2026",
     name: "Santiago Rodríguez",
-    role: "Desarrollador frontend",
+    role: "Desarrollador fullstack",
     description:
-      "Convierto requisitos de producto en interfaces claras y adaptables. Tengo experiencia en aplicaciones conectadas a APIs, flujos protegidos y procesos basados en roles. Me enfoco en una arquitectura frontend mantenible, las pruebas y experiencias de usuario cuidadas.",
+      "Convierto requisitos de producto en interfaces claras y adaptables. Tengo experiencia en aplicaciones fullstack con flujos protegidos y procesos basados en roles. Me enfoco en una arquitectura mantenible, las pruebas y experiencias de usuario cuidadas.",
     cta: "Descargar CV",
     portraitDescription: "Santiago Rodríguez con traje negro y corbata",
     metrics: {
@@ -82,7 +82,7 @@ export const es = {
     titleLead: "Mis",
     titleAccent: "proyectos",
     descriptionLead:
-      "Creo sistemas frontend en torno a necesidades operativas reales y convierto procesos complejos en experiencias claras y adaptadas a cada rol. Estos proyectos combinan interfaces reutilizables, integración fiable de APIs y validación rigurosa con conocimientos prácticos full-stack.",
+      "Creo sistemas fullstack en torno a necesidades operativas reales y convierto procesos complejos en experiencias claras y adaptadas a cada rol. Estos proyectos combinan interfaces reutilizables, integración fiable de APIs y validación rigurosa con conocimientos prácticos",
     descriptionDetail:
       " Cada proyecto demuestra mis habilidades para crear experiencias de usuario sólidas y código optimizado.",
     mediaPlaceholder: "Imagen del proyecto",
@@ -120,7 +120,7 @@ export const es = {
     titleLead: "Acerca de",
     titleAccent: "mí",
     description:
-      "Soy un desarrollador venezolano motivado por el desafío de convertir problemas reales en soluciones digitales claras y útiles. Combino una ingeniería frontend reflexiva con un entendimiento más amplio de los sistemas, lo que me permite crear experiencias intuitivas para los usuarios, confiables en la práctica y fundamentadas en necesidades comerciales genuinas.",
+      "Soy un desarrollador venezolano motivado por el desafío de convertir problemas reales en soluciones digitales claras y útiles. Combino una ingeniería frontend reflexiva con entendimiento práctico de backend, lo que me permite crear experiencias intuitivas para los usuarios, confiables en la práctica y fundamentadas en necesidades comerciales genuinas.",
     portraitDescription:
       "Retrato de Santiago Rodríguez con traje negro y corbata",
     facts: {

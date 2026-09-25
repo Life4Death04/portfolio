@@ -21,9 +21,9 @@ export const en = {
   home: {
     availability: "Available for new work — September 2026",
     name: "Santiago Rodríguez",
-    role: "Frontend developer",
+    role: "Fullstack developer",
     description:
-      "I turn product requirements into clear, responsive interfaces. Experienced in API-connected applications, protected flows and role-based workflows. Focused on maintainable frontend architecture, testing, and polished user experiences.",
+      "I turn product requirements into clear, responsive interfaces. Experienced in API-connected applications, protected flows and role-based workflows. Focused on maintainable architecture, testing, and polished user experiences.",
     cta: "Download resume",
     portraitDescription: "Santiago Rodríguez wearing a black suit and tie",
     metrics: {
@@ -86,7 +86,7 @@ export const en = {
     titleLead: "My",
     titleAccent: "Projects",
     descriptionLead:
-      "I build frontend systems around real operational needs, turning complex workflows into clear, role-aware experiences. These projects combine reusable interfaces, reliable API integration, and disciplined validation with practical full-stack awareness.",
+      "I build fullstack systems around real operational needs, turning complex workflows into clear, role-aware experiences. These projects combine reusable interfaces, reliable API integration, and disciplined validation with practical full-stack awareness.",
     descriptionDetail:
       " Each project is a demonstration of my skills in creating solid user experiences and optimized code.",
     mediaPlaceholder: "Project shot",
@@ -134,11 +134,11 @@ export const en = {
       },
       experience: {
         label: "Current role",
-        value: "Frontend Developer",
+        value: "Fullstack Developer",
       },
       focus: {
         label: "Focus",
-        value: "React · TypeScript · Full-stack awareness",
+        value: "React · TypeScript · Focused on Frontend",
       },
     },
     actions: {
